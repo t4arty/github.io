@@ -1,21 +1,19 @@
 <!doctype html>
-
-<html lang="ru">
+<html>
 <head>
-  <meta charset="utf-8"></>
-  <title>Test for vk on js</title>
+    <meta charset="utf-8">
+    <title>Demo</title>
 </head>
 <body>
-
-	<a href = "http://localhost">Yandex</a>
-	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-	<script>
-		$( document ).ready(function() {
+    <a href="http://localhost">jQuery</a>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+    $( document ).ready(function() {
+    	$( "a" ).click(function( event ) {
+    		alert( "Thanks for visiting!" );
+    	});
+    });
  
-    		$( "a" ).click(function( event ) {
- 
-        	alert( "Thanks for visiting!" );
-    		});
-	</script>
+    </script>
 </body>
 </html>
