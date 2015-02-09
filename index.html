@@ -12,7 +12,12 @@
 </head>
 <body>
 	<script language="JavaScript">
-		$( "button.continue" ).html( "Next Step..." )
+		$( document ).ready(function() {
+ 
+    		$( "a" ).click(function( event ) {
+ 
+        	alert( "Thanks for visiting!" );
+    		});
 	</script>
 </body>
 </html>
