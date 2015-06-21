@@ -6,25 +6,28 @@
 
 <!-- <script src="http://vk.com/js/api/xd_connection.js?2" type="text/JavaScript"></script> -->
 <style type="text/css" >
-.start {
-	padding: 0px;
-	margin: 0px;
+
 }
 </style>
+
+<script type="text/javascript" src="Main.js"></script>
 
 </head>
 <body style="margin: 0px">
 
 <div id="main" style="width: 600px;height: 500px;background: blue; display: block;">
-	<div id="textEnter" style="width: 600px;height: 30px;background: yellow;">
+	<div id="textEnter" style="width: 600px;height: 30px;background: yellow;">	
 		
 		<form id='textEnter'>
 			<input id='post' type="text" style="width: 80%; margin: 4px; margin-left: 10px">
-			<input id='start' type="submit" value="Начать." style="width: 15%;">
+			<input id='start' onclick='showAdr(post.value)' type="button" value="Начать." style="width: 15%;">
 		</form>
 		
 	</div>
-	<div id='postPlace' style='margin-top: 5px; background-color: green;width: 100%;height: 50%'></div>
+	<p id='test' align="center" style="margin: 4px">Test</p>
+	<div id='postPlace' style='margin-top: 5px; background-color: green;width: 100%;height: 50%'>
+		
+	</div>
 </div>
 
 
@@ -44,7 +47,7 @@ a.search.split('wall')[1].split('_')[0],
 a.search.split('wall')[1].split('_')[1]
 );
 
-</script
+</script>
 
 <script type="text/JavaScript">
 

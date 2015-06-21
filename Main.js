@@ -9,3 +9,8 @@ VK.init({
 VK.api("users.get",{user_ids:"1,2,3"}, function(data){
     
 });
+
+
+function showAdr(str) {
+    document.getElementById('test').innerHTML = str;
+}
