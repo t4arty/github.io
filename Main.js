@@ -12,5 +12,9 @@ VK.api("users.get",{user_ids:"1,2,3"}, function(data){
 
 
 function showAdr(str) {
-    document.getElementById('test').innerHTML = str;
+	if (str == '' || str == ' ') {
+		document.getElementById('test').innerHTML = ' ';
+	}else{
+		document.getElementById('test').innerHTML = str;
+	}
 }
