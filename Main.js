@@ -33,6 +33,8 @@ function getGroupData() {
 }
 
 function wait() {
+    document.getElementById('data').innerHTML = 'name: '+getGroupData.group+' count:'+getGroupData.count;
+    document.getElementById('av').src = getGroupData.ava;
     console.log('Done');
 }
 
