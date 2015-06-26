@@ -2,7 +2,7 @@
  * 
  */
 
-var u;
+var u='work';
 
 
 VK.init({
