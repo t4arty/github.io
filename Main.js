@@ -11,8 +11,10 @@ var u = 11;
 
 function test1() {
     VK.api("users.get",{user_ids:"1,2,3"}, function(data){
-	u = data.response[0].first_name;
-	document.getElementById('count').innerHTML = u;
+	for(i=0;i<data.response.length;i++) {
+	    u = data.response[i].first_name;
+	    document.getElementById('count').innerHTML += u + '<br>';
+	}
     });
 }
 
