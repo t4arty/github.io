@@ -11,7 +11,7 @@ var grp = 0;
 var us = 0;
 var grpAvatar = 0;
 
-var obj = {};
+var obj = [];
 
 function getGroupInfo() {
     VK.api("groups.getById",{'group_id': '45091870','fields':'members_count,photo_100'}, function(data){
@@ -20,9 +20,9 @@ function getGroupInfo() {
 	    us = data.response[i].members_count;
 	    grpAvatar = data.response[i].photo_100;
 	    
-	    obj['group'] = grp;
-	    obj['count'] = us;
-	    obj['ava'] = grpAvatar;
+	    obj[0] = grp;
+	    obj[1] = us;
+	    obj[2] = grpAvatar;
 	    
 	    wait();
 	}
@@ -33,8 +33,8 @@ function getGroupData() {
 }
 
 function wait() {
-    document.getElementById('data').innerHTML = 'name: '+getGroupData.group+' count:'+getGroupData.count;
-    document.getElementById('av').src = getGroupData.ava;
+    document.getElementById('data').innerHTML = 'name: '+getGroupData()[0]' count:'+getGroupData()[1];
+    document.getElementById('av').src = getGroupData()[2];
     console.log('Done');
 }
 
