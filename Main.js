@@ -11,15 +11,29 @@ var grp = 0;
 var us = 0;
 var grpAvatar = 0;
 
-function getGroupInfo() {
-    VK.api("groups.getById",{'group_id':'45091870','fields':'members_count,photo_100'}, function(data){
+var obj = {};
+
+function getGroupInfo(groupId) {
+    VK.api("groups.getById",{'group_id': groupId,'fields':'members_count,photo_100'}, function(data){
 	for(i=0;i<data.response.length;i++) {
 	    grp = data.response[i].name;
 	    us = data.response[i].members_count;
 	    grpAvatar = data.response[i].photo_100;
-	    document.getElementById('count').innerHTML += '<br>' + grp + " " + us + '<img src="'+grpAvatar+'"></img>';
+	    
+	    obj[group] = grp;
+	    obj[count] = us;
+	    obj[ava] = grpAvatar;
+	    
+	    setTimeOut(wait,500);
 	}
     });
+}
+function getGroupData() {
+    return obj;
+}
+
+function wait() {
+    console.log('Done');
 }
 
 //'http://vk.com/darcor?w=wall-45091870_69859'
