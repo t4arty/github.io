@@ -24,7 +24,7 @@ function getGroupInfo() {
 	    obj['count'] = us;
 	    obj['ava'] = grpAvatar;
 	    
-	    setTimeOut(wait,500);
+	    wait();
 	}
     });
 }
