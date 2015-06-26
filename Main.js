@@ -34,7 +34,7 @@ function getGroupData() {
 
 function wait() {
     var a = getGroupData();
-    document.getElementById('data').innerHTML = 'name: '+a[0]+' count:'+a[1];
+    document.getElementById('data').innerHTML = 'name: '+a[0]+'<br>'+' count:'+a[1];
     document.getElementById('av').src = a[2];
     console.log('Done');
 }
