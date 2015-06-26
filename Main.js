@@ -11,9 +11,10 @@ VK.init({
 	
 VK.api("users.get",{user_ids:"1,2,3"}, function(data){
     u = data.response.id;
+    console.log(u);
 });
 
-function test() {
+function test1() {
     return u;
 }
 
