@@ -13,8 +13,8 @@ var grpAvatar = 0;
 
 var obj = {};
 
-function getGroupInfo(groupId) {
-    VK.api("groups.getById",{'group_id': groupId,'fields':'members_count,photo_100'}, function(data){
+function getGroupInfo() {
+    VK.api("groups.getById",{'group_id': '45091870','fields':'members_count,photo_100'}, function(data){
 	for(i=0;i<data.response.length;i++) {
 	    grp = data.response[i].name;
 	    us = data.response[i].members_count;
