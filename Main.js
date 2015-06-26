@@ -20,9 +20,9 @@ function getGroupInfo() {
 	    us = data.response[i].members_count;
 	    grpAvatar = data.response[i].photo_100;
 	    
-	    obj[group] = grp;
-	    obj[count] = us;
-	    obj[ava] = grpAvatar;
+	    obj['group'] = grp;
+	    obj['count'] = us;
+	    obj['ava'] = grpAvatar;
 	    
 	    setTimeOut(wait,500);
 	}
