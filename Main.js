@@ -7,13 +7,17 @@ VK.init({
 });
 
 
-var u = 11;
+var grp = 0;
+var us = 0;
+var grpAvatar = 0;
 
 function getGroupInfo() {
     VK.api("groups.getById",{'group_id':'45091870','fields':'members_count,photo_100'}, function(data){
-	for(key in data.response) {
-	    u = key;
-	    document.getElementById('count').innerHTML += u + '<br>';
+	for(i=0;i<data.response.length;i++) {
+	    grp = data.response[i].name;
+	    us = data.response[i].members_count;
+	    grpAvatar = data.response[i].photo_100;
+	    document.getElementById('count').innerHTML += '<br>' + grp + " " + us + '<img src="'+grpAvatar+'"></img>';
 	}
     });
 }
