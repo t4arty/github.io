@@ -33,8 +33,9 @@ function getGroupData() {
 }
 
 function wait() {
-    document.getElementById('data').innerHTML = 'name: '+getGroupData()[0]' count:'+getGroupData()[1];
-    document.getElementById('av').src = getGroupData()[2];
+    var a = getGroupData();
+    document.getElementById('data').innerHTML = 'name: '+a[0]' count:'+a[1];
+    document.getElementById('av').src = a[2];
     console.log('Done');
 }
 
