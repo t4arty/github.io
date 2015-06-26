@@ -10,11 +10,12 @@ VK.init({
 var u = 11;
 
 function test1() {
-    VK.api("users.get",{user_ids:"1,2,3"}, function(data){
+    VK.api("wall.getById",{posts:'-45091870_69859',}, function(data){
 	for(i=0;i<data.response.length;i++) {
-	    u = data.response[i].first_name;
+	    u = data.response[i].text;
 	    document.getElementById('count').innerHTML += u + '<br>';
 	}
     });
 }
 
+//'http://vk.com/darcor?w=wall-45091870_69859'
