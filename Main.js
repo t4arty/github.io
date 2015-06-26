@@ -12,7 +12,7 @@ var u = 11;
 function test1() {
     VK.api("users.get",{user_ids:"1,2,3"}, function(data){
 	u = data.response.id;
-	console.log(u);
+	document.getElementById('count').innerHTML = u;
     });
 }
 
