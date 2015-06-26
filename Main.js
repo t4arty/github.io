@@ -15,7 +15,7 @@ VK.api("users.get",{user_ids:"1,2,3"}, function(data){
 });
 
 function test1() {
-    return u;
+    document.getElementById('count').innerHTML = u;
 }
 
 function showAdr(str) {
