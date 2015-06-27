@@ -34,7 +34,8 @@ function getGroupData() {
 
 function wait() {
     var a = getGroupData();
-    document.getElementById('data').innerHTML = 'name: '+a[0]+'<br>'+' count:'+a[1];
+    document.getElementById('groupName').innerHTML = a[0];
+    document.getElementById('members_count').innerHTML = a[1];
     document.getElementById('av').src = a[2];
     console.log('Done');
 }
