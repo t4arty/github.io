@@ -12,6 +12,7 @@ var us = 0;
 var grpAvatar = 0;
 
 var obj = [];
+var info = [];
 
 function getGroupInfo() {
     VK.api("groups.getById",{'group_id': '45091870','fields':'members_count,photo_100'}, function(data){
@@ -38,6 +39,10 @@ function wait() {
     document.getElementById('members_count').innerHTML = a[1];
     document.getElementById('av').src = a[2];
     console.log('Done');
+}
+
+function parseLink(link) {
+    
 }
 
 //'http://vk.com/darcor?w=wall-45091870_69859'
