@@ -14,8 +14,8 @@ var grpAvatar = '';
 var obj = [];
 var parsed = [];
 
-function getGroupInfo() {
-    VK.api("groups.getById",{'group_id': '45091870','fields':'members_count,photo_100'}, function(data){
+function getGroupInfo(groupId) {
+    VK.api("groups.getById", { 'group_id': groupId, 'fields': 'members_count,photo_100' }, function (data) {
 	for(var i=0;i<data.response.length;i++) {
 	    grp = data.response[i].name;
 	    us = data.response[i].members_count;
@@ -42,19 +42,18 @@ function wait() {
 }
 
 function parseLink() {
-    var link = '';
+    var link = document.getElementById('post').value;
     
-    if (link != '' || link.contains('vk.com')) {
+    if (link != '') {
 	var a = document.createElement('a');
 	a.href = link;
-	document.getElementById('ooo').innerHTML = window.location;
 	parsed[0] = a.search.split('=wall')[1].split('_')[0];
 	parsed[1] = a.search.split('=wall')[1].split('_')[1];
 	
-	document.getElementById('post').value = link;
-	
+	getGroupInfo(parsed[0]);
+
     }else{
-	document.getElementById('post').value = 'Wrong adres for post message. Enter new one.';
+	document.getElementById('post').value = 'Something goes wrong. Enter valid string. GL';
     }
 }
 
