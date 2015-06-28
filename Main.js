@@ -17,7 +17,9 @@ var parsed = [];
 function getGroupInfo(groupId) {
     
     VK.api("groups.getById", { 'group_id': Math.abs(groupId), 'fields': 'members_count,photo_100' }, function (data) {
-        console.log(data);
+        if (data.error) {
+            return;
+        }
 	for(var i=0;i<data.response.length;i++) {
 	    grp = data.response[i].name;
 	    us = data.response[i].members_count;
@@ -46,7 +48,7 @@ function wait() {
 function parseLink() {
     var link = String(document.getElementById('post').value);
     
-    if (link != '' && (link.match('vk.com')=='vk.com')) {
+    if (link != '' && (link.match('vk.com')=='vk.com') && (link.match('wall-')=='wall-')) {
 	var a = document.createElement('a');
 	a.href = link;
 	parsed[0] = a.search.split('=wall')[1].split('_')[0];
@@ -56,8 +58,13 @@ function parseLink() {
 	getGroupInfo(parsed[0]);
 
     }else{
-	document.getElementById('post').value = 'Something goes wrong. Enter valid string. GL';
+        document.getElementById('post').value = 'Something goes wrong. Enter valid string. GL';
+        setTimeout(clearadress, 800);
     }
+}
+
+function clearadress() {
+    document.getElementById('post').value = '';
 }
 
 function contain(str,what) {
