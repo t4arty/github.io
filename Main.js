@@ -44,20 +44,25 @@ function wait() {
 }
 
 function parseLink() {
-    var link = document.getElementById('post').value;
+    var link = String(document.getElementById('post').value);
     
-    if (link != '') {
+    if (link != '' && (link.match('vk.com')=='vk.com')) {
 	var a = document.createElement('a');
 	a.href = link;
 	parsed[0] = a.search.split('=wall')[1].split('_')[0];
 	parsed[1] = a.search.split('=wall')[1].split('_')[1];
 	
-	console.log(parsed[0], parsed[1]);
+	console.log(parsed[0], parsed[1], String(window.location).match('vk,com'));
 	getGroupInfo(parsed[0]);
 
     }else{
 	document.getElementById('post').value = 'Something goes wrong. Enter valid string. GL';
     }
+}
+
+function contain(str,what) {
+    var s = str;
+    
 }
 
 //'http://vk.com/darcor?w=wall-45091870_69859'
