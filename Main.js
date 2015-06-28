@@ -12,7 +12,7 @@ var us = '';
 var grpAvatar = '';
 
 var obj = [];
-var info = [];
+var parsed = [];
 
 function getGroupInfo() {
     VK.api("groups.getById",{'group_id': '45091870','fields':'members_count,photo_100'}, function(data){
@@ -45,7 +45,16 @@ function parseLink() {
     var link = '';
     
     if (link != '' || link.contains('vk.com')) {
+	var a = document.createElement('a');
+	a.href = link;
+	document.getElementById('ooo').innerHTML = window.location;
+	parsed[0] = a.search.split('=wall')[1].split('_')[0];
+	parsed[1] = a.search.split('=wall')[1].split('_')[1];
 	
+	document.getElementById('post').value = link;
+	
+    }else{
+	document.getElementById('post').value = 'Wrong adres for post message. Enter new one.';
     }
 }
 
