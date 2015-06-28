@@ -52,7 +52,7 @@ function parseLink() {
 	parsed[0] = a.search.split('=wall')[1].split('_')[0];
 	parsed[1] = a.search.split('=wall')[1].split('_')[1];
 	
-	console.log(parsed[0], parsed[1], String(window.location).match('vk,com'));
+	console.log(parsed[0], parsed[1], window.location.host);
 	getGroupInfo(parsed[0]);
 
     }else{
