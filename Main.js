@@ -15,8 +15,8 @@ var obj = [];
 var parsed = [];
 
 function getGroupInfo(groupId) {
-    groupId = groupId + '';
-    VK.api("groups.getById", { 'group_id': groupId, 'fields': 'members_count,photo_100' }, function (data) {
+    
+    VK.api("groups.getById", { 'group_id': Math.abs(groupId), 'fields': 'members_count,photo_100' }, function (data) {
         console.log(data);
 	for(var i=0;i<data.response.length;i++) {
 	    grp = data.response[i].name;
@@ -52,6 +52,7 @@ function parseLink() {
 	parsed[0] = a.search.split('=wall')[1].split('_')[0];
 	parsed[1] = a.search.split('=wall')[1].split('_')[1];
 	
+	console.log(parsed[0], parsed[1]);
 	getGroupInfo(parsed[0]);
 
     }else{
