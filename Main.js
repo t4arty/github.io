@@ -16,6 +16,7 @@ var parsed = [];
 
 function getGroupInfo(groupId) {
     VK.api("groups.getById", { 'group_id': groupId, 'fields': 'members_count,photo_100' }, function (data) {
+        console.log(data);
 	for(var i=0;i<data.response.length;i++) {
 	    grp = data.response[i].name;
 	    us = data.response[i].members_count;
