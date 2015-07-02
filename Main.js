@@ -19,7 +19,7 @@ function getGroupInfo(groupId) {
     
     VK.api("groups.getById", { 'group_id': Math.abs(groupId), 'fields': 'members_count,photo_100' }, function (data) {
         if (data.error) {
-            return;
+            errorMSG('Error in data. Wrong group data.')
         }
 	for(var i=0;i<data.response.length;i++) {
 	    grp = data.response[i].name;
@@ -30,18 +30,23 @@ function getGroupInfo(groupId) {
 	    obj[1] = us;
 	    obj[2] = grpAvatar;
 	    
-	    wait();
+	    groupViewChanges(getGroupData());
 	}
     });
 }
+
+function getGroupMembers() {
+
+}
+
 function getGroupData() {
     return obj;
 }
 
-function wait() {
-    var a = getGroupData();
-    document.getElementById('groupName').innerHTML = a[0];
-    document.getElementById('members_count').innerHTML = a[1];
+function groupViewChanges(obj) {
+    var a = obj;
+    document.getElementById('groupName').innerHTML = 'Название: '+a[0];
+    document.getElementById('members_count').innerHTML = 'Подписчики: '+a[1];
     document.getElementById('av').src = a[2];
 }
 
@@ -54,17 +59,18 @@ function parseLink() {
             var adr = link.substring(link.indexOf('=wall') + 5, link.length);
             var p = adr.split('_');
             if ((p[0] === undefined) && (p[1] === undefined)) {
-                errorMSG();
+                errorMSG('Wrong: group or post or both');
             } else {
-                parsed[0] = p[0];
-                parsed[1] = p[1];
-                getGroupInfo(parsed[0]);
+                if ((/\d+/.test(p[0])) && (/\d+/.test(p[1]))) {
+                    getGroupInfo(parsed[0]);
+                }
+                
             }
         } else {
-            errorMSG();
+            errorMSG('Wrong: not wall post');
         }
     }else{
-        errorMSG();
+        errorMSG('Wrong: not vk.com');
     }
 }
 
@@ -72,8 +78,8 @@ function clearadress() {
     document.getElementById('post').value = '';
 }
 
-function errorMSG() {
-    document.getElementById('post').value = WRONG_TEXT;
+function errorMSG(msg) {
+    document.getElementById('post').value = msg;
     setTimeout(clearadress, 800);
 }
 
