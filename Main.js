@@ -6,6 +6,7 @@ VK.init({
     apiId: 1755175
 });
 
+var WRONG_TEXT = 'Something goes wrong. Enter valid string.';
 
 var grp = '';
 var us = '';
@@ -47,17 +48,23 @@ function wait() {
 function parseLink() {
     var link = String(document.getElementById('post').value);
     
-    if (link != '' && (link.match('vk.com')=='vk.com') && (link.match('wall-')=='wall-')) {
-	var a = document.createElement('a');
-	a.href = link;
-	parsed[0] = a.search.split('=wall')[1].split('_')[0];
-	parsed[1] = a.search.split('=wall')[1].split('_')[1];
+    if (link != '' && (link.match('vk.com') == 'vk.com') && (link.match('wall-') == 'wall-')) {
 	
-	getGroupInfo(parsed[0]);
-
+        if (link.indexOf('=wall') != -1) {
+            var adr = link.substring(link.indexOf('=wall') + 5, link.length);
+            var p = adr.split('_');
+            if ((p[0] === undefined) && (p[1] === undefined)) {
+                errorMSG();
+            } else {
+                parsed[0] = p[0];
+                parsed[1] = p[1];
+                getGroupInfo(parsed[0]);
+            }
+        } else {
+            errorMSG();
+        }
     }else{
-        document.getElementById('post').value = 'Something goes wrong. Enter valid string. GL';
-        setTimeout(clearadress, 800);
+        errorMSG();
     }
 }
 
@@ -65,9 +72,9 @@ function clearadress() {
     document.getElementById('post').value = '';
 }
 
-function contain(str,what) {
-    var s = str;
-    
+function errorMSG() {
+    document.getElementById('post').value = WRONG_TEXT;
+    setTimeout(clearadress, 800);
 }
 
 //'http://vk.com/darcor?w=wall-45091870_69859'
