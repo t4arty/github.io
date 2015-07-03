@@ -74,8 +74,8 @@ function getParsedInfo() {
 
 function groupViewChanges(obj) {
     var a = obj;
-    document.getElementById('groupName').innerHTML = 'Название: '+a[0];
-    document.getElementById('members_count').innerHTML = 'Подписчики: '+a[1];
+    document.getElementById('groupName').innerHTML = 'Name: '+a[0];
+    document.getElementById('members_count').innerHTML = 'Members: '+a[1];
     document.getElementById('av').src = a[2];
 }
 
@@ -91,6 +91,7 @@ function parseLink() {
                 errorMSG('Wrong: group or post or both');
             } else {
                 if ((/\d+/.test(p[0])) && (/\d+/.test(p[1]))) {
+                    parsed[0] = p[0]; parsed[1] = p[1];
                     getGroupInfo(parsed[0]);
                 }
                 
