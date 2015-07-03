@@ -49,8 +49,9 @@ function getGroupMembers(objTarget) {
         if (data.error) { errorMSG('Wrong: Likes fail.'); }
 
         m_count = data.response.count;
+        var t = data.response.items;
         var members = [];
-        members = members.concat(JSON.parse("[" + data.response + "]"));
+        //members = members.concat(JSON.parse("[" + data.response + "]"));
 
         console.log(m_count,data,members);
 
@@ -75,8 +76,8 @@ function getParsedInfo() {
 
 function groupViewChanges(obj) {
     var a = obj;
-    document.getElementById('groupName').innerHTML = 'Name: '+a[0];
-    document.getElementById('members_count').innerHTML = 'Members: '+a[1];
+    document.getElementById('groupName').innerHTML = 'Название: '+a[0];
+    document.getElementById('members_count').innerHTML = 'Подписчики: '+a[1];
     document.getElementById('av').src = a[2];
 }
 
