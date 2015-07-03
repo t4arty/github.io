@@ -51,9 +51,9 @@ function getGroupMembers(objTarget) {
         m_count = data.response.count;
         var t = data.response.items;
         var members = [];
-        //members = members.concat(JSON.parse("[" + data.response + "]"));
+        members = members.concat(JSON.parse("[" + data.response.items + "]"));
 
-        console.log(m_count,data,members);
+        console.log(m_count,data,members,t);
 
     });
 
