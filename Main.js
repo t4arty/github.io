@@ -81,8 +81,8 @@ function getParsedInfo() {
 
 function groupViewChanges(obj) {
     var a = obj;
-    document.getElementById('groupName').innerHTML = 'Название: '+a[0];
-    document.getElementById('members_count').innerHTML = 'Подписчики: '+a[1];
+    document.getElementById('groupName').innerHTML = 'Name: '+a[0];
+    document.getElementById('members_count').innerHTML = 'Count: '+a[1];
     document.getElementById('av').src = a[2];
 }
 
