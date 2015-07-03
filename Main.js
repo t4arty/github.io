@@ -51,9 +51,9 @@ function getGroupMembers(objTarget) {
         m_count = data.response.count;
         var t = data.response;
         var members = [];
-        members = members + t.users;
+        members = members.concat(t.users);
 
-        document.getElementById('m_members').innerHTML = 'Count: '+m_count;
+        document.getElementById('m_members').innerHTML = 'Count: '+m_count + ' users: '+members;
 
         console.log(m_count);
         console.log('---');
