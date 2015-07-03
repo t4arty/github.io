@@ -6,7 +6,7 @@ VK.init({
     apiId: 1755175
 });
 
-var WRONG_TEXT = 'Something goes wrong. Enter valid string.';
+var WRONG_TEXT = 'Something goes wrong. Enter valid post address.';
 
 var grp = '';
 var us = '';
@@ -31,16 +31,44 @@ function getGroupInfo(groupId) {
 	    obj[2] = grpAvatar;
 	    
 	    groupViewChanges(getGroupData());
+
+	    getGroupMembers(parsed);
 	}
     });
 }
 
-function getGroupMembers() {
+function getGroupMembers(objTarget) {
+    var OFFSET = 0;
+    var info = objTarget;
+    var m_count = 0;
+    var code = '';
+
+
+    VK.api('likes.getList', {'type':'post','owner_id':info[0],'item_id':info[1],'offset':OFFSET,'count':1000}, function (data) {
+        if (data.error) { errorMSG('Wrong: Get likes fail.'); }
+
+        m_count = data.response.count;
+        var members = data.response.items;
+
+        console.log(m_count,members);
+
+    });
+
+        code = 'var c=0;var p=[];var i=0;var o=' + OFFSET + ';var u="";' +
+        'while(i!=10){'+
+        'var li=API.likes.getList({"type":"post","owner_id":-10639516,"item_id":57781356,"offset":o,"count":1000});'+
+        'c=li.count;u=u+API.users.get({"user_ids":li.items,"fields":"sex"})@.first_name;i=i+1;o=o+1000;}'+
+        'return {"c":c,"u":u};';
+
 
 }
 
 function getGroupData() {
     return obj;
+}
+
+function getParsedInfo() {
+    return parsed;
 }
 
 function groupViewChanges(obj) {
@@ -82,6 +110,3 @@ function errorMSG(msg) {
     document.getElementById('post').value = msg;
     setTimeout(clearadress, 800);
 }
-
-//'http://vk.com/darcor?w=wall-45091870_69859'
-//  45091870 
