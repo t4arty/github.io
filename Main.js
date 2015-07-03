@@ -50,7 +50,7 @@ function getGroupMembers(objTarget) {
 
         m_count = data.response.count;
         var members = [];
-        members.concat(data.response.items);
+        members = members.concat(JSON.parse("[" + data.response + "]"));
 
         console.log(m_count,data,members);
 
