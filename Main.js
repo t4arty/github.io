@@ -35,8 +35,7 @@ function getGroupInfo(groupId) {
                 getGroupMembers(parsed);
             }
         }
-	}
-    });
+	});
 }
 
 function getGroupMembers(objTarget) {
