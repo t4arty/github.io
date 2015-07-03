@@ -49,11 +49,10 @@ function getGroupMembers(objTarget) {
         if (data.error) { errorMSG('Wrong: Likes fail.'); }
 
         m_count = data.response.count;
-        var t = data.response.items;
+        var t = data.response;
         var members = [];
-        members = members.concat(JSON.parse("[" + data.response.items + "]"));
 
-        document.getElementById('m_members').innerHTML = t;
+        document.getElementById('m_members').innerHTML += m_count;
 
         console.log(m_count);
         console.log('---');
