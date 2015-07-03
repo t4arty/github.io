@@ -45,7 +45,7 @@ function getGroupMembers(objTarget) {
 
 
     VK.api('likes.getList', {'type':'post','owner_id':info[0],'item_id':info[1],'offset':OFFSET,'count':1000}, function (data) {
-        if (data.error) { errorMSG('Wrong: Get likes fail.'); }
+        if (data.error) { errorMSG('Wrong: Likes fail.'); }
 
         m_count = data.response.count;
         var members = data.response.items;
@@ -108,5 +108,5 @@ function clearadress() {
 
 function errorMSG(msg) {
     document.getElementById('post').value = msg;
-    setTimeout(clearadress, 800);
+    setTimeout(clearadress, 1000);
 }
