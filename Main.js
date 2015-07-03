@@ -45,13 +45,14 @@ function getGroupMembers(objTarget) {
     var code = '';
 
 
-    VK.api('likes.getList', {'type':'post','owner_id':info[0],'item_id':info[1],'offset':OFFSET,'count':1000}, function (data) {
+    VK.api('likes.getList', {'type':'post','owner_id':info[0],'item_id':info[1],'offset':OFFSET,'count':10}, function (data) {
         if (data.error) { errorMSG('Wrong: Likes fail.'); }
 
         m_count = data.response.count;
-        var members = data.response.items;
+        var members = [];
+        members.concat(data.response.items);
 
-        console.log(m_count,members);
+        console.log(m_count,data,members);
 
     });
 
