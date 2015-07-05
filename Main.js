@@ -45,7 +45,7 @@ function getGroupMembers(objTarget) {
     var code = '';
 
 
-    VK.api('likes.getList', {'type':'post','owner_id':info[0],'item_id':info[1],'offset':OFFSET,'count':10}, function (data) {
+    VK.api('likes.getList', {'type':'post','owner_id':info[0],'item_id':info[1],'offset':OFFSET,'count':15}, function (data) {
         if (data.error) { errorMSG('Wrong: Likes fail.'); }
 
         m_count = data.response.count;
@@ -53,13 +53,8 @@ function getGroupMembers(objTarget) {
         var members = [];
         members = members.concat(t.users);
 
-        document.getElementById('m_members').innerHTML = 'Count: '+m_count +'<br>'+ ' users: '+members;
-
-        console.log(m_count);
-        console.log('---');
-        console.log(members);
-        console.log(t);
-
+        document.getElementById('m_members').innerHTML = 'Count: '+m_count +'<br>'+ ' users: '+members.length;
+        setTimeout(waiting, 333);
     });
 
         code = 'var c=0;var p=[];var i=0;var o=' + OFFSET + ';var u="";' +
@@ -79,43 +74,47 @@ function getParsedInfo() {
     return parsed;
 }
 
-function groupViewChanges(obj) {
-    var a = obj;
-    document.getElementById('groupName').innerHTML = 'Name: '+a[0];
-    document.getElementById('members_count').innerHTML = 'Count: '+a[1];
-    document.getElementById('av').src = a[2];
+function waiting(tsec) {
+    //time
 }
 
-function parseLink() {
-    var link = String(document.getElementById('post').value);
-    
-    if (link != '' && (link.match('vk.com') == 'vk.com') && (link.match('wall-') == 'wall-')) {
-	
-        if (link.indexOf('=wall') != -1) {
-            var adr = link.substring(link.indexOf('=wall') + 5, link.length);
-            var p = adr.split('_');
-            if ((p[0] === undefined) && (p[1] === undefined)) {
-                errorMSG('Wrong: group or post or both');
-            } else {
-                if ((/\d+/.test(p[0])) && (/\d+/.test(p[1]))) {
-                    parsed[0] = p[0]; parsed[1] = p[1];
-                    getGroupInfo(parsed[0]);
-                }
-                
-            }
-        } else {
-            errorMSG('Wrong: not wall post');
-        }
-    }else{
-        errorMSG('Wrong: not vk.com');
+    function groupViewChanges(obj) {
+        var a = obj;
+        document.getElementById('groupName').innerHTML = 'Name: '+a[0];
+        document.getElementById('members_count').innerHTML = 'Count: '+a[1];
+        document.getElementById('av').src = a[2];
     }
-}
 
-function clearadress() {
-    document.getElementById('post').value = '';
-}
+    function parseLink() {
+        var link = String(document.getElementById('post').value);
+    
+        if (link != '' && (link.match('vk.com') == 'vk.com') && (link.match('wall-') == 'wall-')) {
+	
+            if (link.indexOf('=wall') != -1) {
+                var adr = link.substring(link.indexOf('=wall') + 5, link.length);
+                var p = adr.split('_');
+                if ((p[0] === undefined) && (p[1] === undefined)) {
+                    errorMSG('Wrong: group or post or both');
+                } else {
+                    if ((/\d+/.test(p[0])) && (/\d+/.test(p[1]))) {
+                        parsed[0] = p[0]; parsed[1] = p[1];
+                        getGroupInfo(parsed[0]);
+                    }
+                
+                }
+            } else {
+                errorMSG('Wrong: not wall post');
+            }
+        }else{
+            errorMSG('Wrong: not vk.com');
+        }
+    }
 
-function errorMSG(msg) {
-    document.getElementById('post').value = msg;
-    setTimeout(clearadress, 1000);
-}
+    function clearadress() {
+        document.getElementById('post').value = '';
+    }
+
+    function errorMSG(msg) {
+        document.getElementById('post').value = msg;
+        setTimeout(clearadress, 1000);
+    }
