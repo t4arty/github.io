@@ -69,7 +69,7 @@ function getGroupMembers(objTarget) {
         'c=li.count;u=u+API.users.get({"user_ids":li.items,"fields":"sex"})@.sex;i=i+1;o=o+co;}'+
         'return {"count":c,"user":u,"le":u.length};';
 
-    VK.api('execute', { 'code': code } ,function (data) {
+    VK.api('execute', { 'code': code, 'v':'5.34' } ,function (data) {
         if (data.response.error) {
             errorMSG('Wrong: Group Member');
             console.log("error");
