@@ -76,7 +76,7 @@ function getGroupMembers(objTarget) {
             group_members_count = data.response.count;
             bothSex = bothSex.concat(data.response.user);
 
-            console.log(group_members_count,bothSex.length, data.response.le);
+            console.log(group_members_count,bothSex.length, bothSex);
         }
     });
 }
