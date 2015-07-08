@@ -61,6 +61,7 @@ function getGroupMembers(objTarget) {
         document.getElementById('m_members').innerHTML = 'Count: '+m_count +'<br>'+ ' users: '+members.length;
         setTimeout(waiting, 333);
     });*/
+    console.log("post", aboutPost[0], aboutPost[1]);
 
     code = 'var c=0;var co=1000;var p=[];var i=0;var o='+offset+';var u=[]; '+
         'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":'+aboutPost[0]+',"item_id":'+aboutPost[1]+',"offset":o,"count":co});'+
