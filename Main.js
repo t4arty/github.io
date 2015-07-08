@@ -39,13 +39,18 @@ function getGroupInfo(groupId) {
 }
 
 function getGroupMembers(objTarget) {
-    var OFFSET = 0;
-    var info = objTarget;
-    var m_count = 0;
+    var offset = 0;
+    var aboutPost = objTarget; // 0-group, 1-item_post
+    var group_members_count = 0;
     var code = '';
+    
+    var menPos = []; //man
+    var womenPos = [];
+
+    var bothSex = [];
 
 
-    VK.api('likes.getList', {'type':'post','owner_id':info[0],'item_id':info[1],'offset':OFFSET,'count':15}, function (data) {
+    /*VK.api('likes.getList', {'type':'post','owner_id':info[0],'item_id':info[1],'offset':OFFSET,'count':15}, function (data) {
         if (data.error) { errorMSG('Wrong: Likes fail.'); }
 
         m_count = data.response.count;
@@ -55,15 +60,24 @@ function getGroupMembers(objTarget) {
 
         document.getElementById('m_members').innerHTML = 'Count: '+m_count +'<br>'+ ' users: '+members.length;
         setTimeout(waiting, 333);
+    });*/
+
+    code = 'var c=0;var co=1000;var p=[];var i=0;var o='+offset+';var u=[]; '+
+        'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":'+aboutPost[0]+',"item_id":'+aboutPost[1]+',"offset":o,"count":co});'+
+        'c=li.count;u=u+API.users.get({"user_ids":li.items,"fields":"sex"})@.sex;i=i+1;o=o+co;}'+
+        'return {"count":c,"user":u,"le":u.length};';
+
+    VK.api('execute', { 'code': code } ,function (data) {
+        if (data.response.error) {
+            errorMSG('Wrong: Group Member');
+            console.log("error");
+        } else {
+            group_members_count = data.response.count;
+            bothSex = bothSex.concat(data.response.user);
+
+            console.log(group_members_count,bothSex.length);
+        }
     });
-
-        code = 'var c=0;var p=[];var i=0;var o=' + OFFSET + ';var u="";' +
-        'while(i!=10){'+
-        'var li=API.likes.getList({"type":"post","owner_id":-10639516,"item_id":57781356,"offset":o,"count":1000});'+
-        'c=li.count;u=u+API.users.get({"user_ids":li.items,"fields":"sex"})@.first_name;i=i+1;o=o+1000;}'+
-        'return {"c":c,"u":u};';
-
-
 }
 
 function getGroupData() {
