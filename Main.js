@@ -39,8 +39,8 @@ function getGroupInfo(groupId) {
 }
 
 function getGroupMembers(objTarget) {
-    var offset = 0;
-    var co = 1000;
+    var offset = '0';
+    var co = '1000';
     var aboutPost = objTarget; // 0-group, 1-item_post
     var group_members_count = 0;
     var code = '';
