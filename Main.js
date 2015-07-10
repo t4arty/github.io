@@ -64,7 +64,7 @@ function getGroupMembers(objTarget) {
     });*/
     console.log("post", aboutPost[0], aboutPost[1]);
 
-    var code1 = 'var a=API.likes.getList({"type":"post","owner_id":'+aboutPost[0]+',"item_id":'+aboutPost[1]+',"offset":0,"count":100}); return {"user":a.items};';
+    var code1 = 'var a=API.likes.getList({"type":"post","owner_id":"'+aboutPost[0]+'","item_id":"'+aboutPost[1]+'","offset":0,"count":100}); return {"ids":a.items};';
 
     code = 'var c=0;var co=100;var p=[];var i=0;var o=0;var u=[];'+
         'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":'+aboutPost[0]+',"item_id":'+aboutPost[1]+',"filter":"likes","friends_only":0,"offset":o,"count":co});'+
