@@ -45,8 +45,8 @@ function getGroupMembers(objTarget) {
     var group_members_count = 0;
     var code = '';
     
-    var menPos = []; //man
-    var womenPos = [];
+    var manPos = []; //man
+    var womanPos = []; //woman
 
     var bothSex = [];
 
@@ -64,7 +64,7 @@ function getGroupMembers(objTarget) {
     });*/
     console.log("post", aboutPost[0], aboutPost[1]);
 
-    var code1 = 'var a=API.likes.getList({"type":"post","owner_id":-10639516,"item_id":58023545,"offset":0,"count":1000}); return {"a":a.items};';
+    var code1 = 'var a=API.likes.getList({"type":"post","owner_id":'+aboutPost[0]+',"item_id":'+aboutPost[1]+',"offset":0,"count":1000}); return {"a":a.items};';
 
     code = 'var c=0;var co=100;var p=[];var i=0;var o=0;var u=[];'+
         'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":'+aboutPost[0]+',"item_id":'+aboutPost[1]+',"filter":"likes","friends_only":0,"offset":o,"count":co});'+
@@ -78,8 +78,17 @@ function getGroupMembers(objTarget) {
         } else {
             //group_members_count = data.response.count;
             bothSex = bothSex.concat(data.response.a);
+            for (i = 0; i < bothSex.length; i++) {
+                if (bothSex[i] == 1) {
+                    manPos.push(i);
+                } else {
+                    womanPos.push(i);
+                }
+            }
 
-            console.log(data.response,bothSex.length, bothSex);
+            console.log(data.response, bothSex.length, bothSex);
+            console.log("m: " + manPos.length);
+            console.log("w: " + womanPos.length);
         }
     });
 }
