@@ -78,15 +78,15 @@ function getGroupMembers(objTarget) {
         } else {
             //group_members_count = data.response.count;
             bothSex = bothSex.concat(data.response.user);
-            for (i = 0; i < bothSex.length; i++) {
+            /*for (i = 0; i < bothSex.length; i++) {
                 if (bothSex[i] == 1) {
                     manPos.push(i);
                 } else {
                     womanPos.push(i);
                 }
-            }
+            }*/
 
-            console.log("data: "+data.response,"bo l: "+bothSex.length, "bo arr: "+bothSex);
+            console.log(data,"bo l: "+bothSex.length, "bo arr: "+bothSex);
             console.log("m: " + manPos.length);
             console.log("w: " + womanPos.length);
         }
