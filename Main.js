@@ -72,7 +72,7 @@ function getGroupMembers(objTarget) {
         'return {"count":c,"user":u,"le":u.length};';
 
     VK.api('execute', { 'code': code1, } ,function (data) {
-        if (data.response.error) {
+        if (data.response.error || data.response.ids == null) {
             errorMSG('Wrong: Group Member');
             console.log("error");
         } else {
