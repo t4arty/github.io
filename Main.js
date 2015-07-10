@@ -77,7 +77,7 @@ function getGroupMembers(objTarget) {
             console.log("error");
         } else {
             //group_members_count = data.response.count;
-            bothSex = bothSex.concat(data.response.a);
+            bothSex = bothSex.concat(data.response.user);
             for (i = 0; i < bothSex.length; i++) {
                 if (bothSex[i] == 1) {
                     manPos.push(i);
