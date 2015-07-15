@@ -30,12 +30,13 @@ function getGroupInfo(groupId) {
                 obj[1] = us;
                 obj[2] = grpAvatar;
 
-                groupViewChanges(getGroupData());
-
-                getGroupMembers(parsed);
             }
         }
 	});
+
+    groupViewChanges(getGroupData());
+    setTimeout(waiting, 400);
+    getGroupMembers(parsed);
 }
 
 function getGroupMembers(objTarget) {
