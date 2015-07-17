@@ -16,16 +16,17 @@ var obj = [];
 var parsed = [0,0];
 
 function getGroupInfo(groupId) {
-    var code1 = 'var a=API.likes.getList({"type":"post","owner_id":"-10639516","item_id":"58333241","offset":0,"count":100}); return {"ids":a.items};';
+    var coder = 'var a=API.likes.getList({"type":"post","owner_id":"-10639516","item_id":"58333241","offset":0,"count":100}); return {"ids":a.items};';
     
-    VK.api('execute', { 'code': code1, }, function (data) {
+    VK.api('execute', { 'code': coder, }, function (data) {
+        console.log("data: ");
         console.log(data);
-        if (data.response.error) {
+        if (data.response.error || data.response == null) {
             errorMSG('Wrong: Group Member');
             console.log("error");
         } else {
             //group_members_count = data.response.count;
-            var bothSex = bothSex.concat(data.response.ids);
+            //var bothSex = bothSex.concat(data.response.ids);
             /*for (i = 0; i < bothSex.length; i++) {
                 if (bothSex[i] == 1) {
                     manPos.push(i);
@@ -34,7 +35,7 @@ function getGroupInfo(groupId) {
                 }
             }*/
 
-            console.log(data, "bo l: " + bothSex.length, "bo arr: " + bothSex);
+            //console.log(data, "bo l: " + bothSex.length, "bo arr: " + bothSex);
             //console.log("m: " + manPos.length);
             //console.log("w: " + womanPos.length);
         }
