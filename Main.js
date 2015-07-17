@@ -36,8 +36,12 @@ function getGroupInfo(groupId) {
 
     groupViewChanges(getGroupData());
     var startTime = new Date().getTime();
-    setTimeout(function () { waiting(); }, 400);
-    var endTime = new Date().getTime();
+    var endTime = 0;
+    setTimeout(function () {
+        waiting();
+        endTime = new Date().getTime();
+        console.log('From setTimeout ' + new Date().getTime());
+    }, 400);
     console.log("eq: " + (endTime - startTime) + " time.");
     getGroupMembers(parsed);
 }
