@@ -18,7 +18,7 @@ var parsed = [];
 function getGroupInfo(groupId) {
     var code1 = 'var a=API.likes.getList({"type":"post","owner_id":"-10639516","item_id":"58333241","offset":0,"count":100}); return {"ids":a.items};';
     
-    VK.api('execute', { 'code': code1, }, function (data) {
+    VK.Api.call('execute', { 'code': code1, }, function (data) {
         console.log(data);
         if (data.response.error) {
             errorMSG('Wrong: Group Member');
