@@ -16,7 +16,32 @@ var obj = [];
 var parsed = [];
 
 function getGroupInfo(groupId) {
+    var code1 = 'var a=API.likes.getList({"type":"post","owner_id":"-10639516","item_id":"58333241","offset":0,"count":100}); return {"ids":a.items};';
     
+    VK.api('execute', { 'code': code1, }, function (data) {
+        console.log(data);
+        if (data.response.error) {
+            errorMSG('Wrong: Group Member');
+            console.log("error");
+        } else {
+            //group_members_count = data.response.count;
+            var bothSex = bothSex.concat(data.response.ids);
+            /*for (i = 0; i < bothSex.length; i++) {
+                if (bothSex[i] == 1) {
+                    manPos.push(i);
+                } else {
+                    womanPos.push(i);
+                }
+            }*/
+
+            console.log(data, "bo l: " + bothSex.length, "bo arr: " + bothSex);
+            //console.log("m: " + manPos.length);
+            //console.log("w: " + womanPos.length);
+        }
+    });
+
+
+    /*
     VK.api("groups.getById", { 'group_id': Math.abs(groupId), 'fields': 'members_count,photo_100' }, function (data) {
         if (data.error) {
             errorMSG('Error in data. Wrong group data.')
@@ -32,18 +57,13 @@ function getGroupInfo(groupId) {
 
             }
         }
-	});
-
+	});*/
+    /*
     groupViewChanges(getGroupData());
-    var startTime = new Date().getTime();
-    var endTime = 0;
-    setTimeout(function () {
-        waiting();
-        endTime = new Date().getTime();
-        console.log('From setTimeout ' + new Date().getTime());
-    }, 400);
-    console.log("eq: " + (endTime - startTime) + " time.");
-    getGroupMembers(parsed);
+    
+    setTimeout(function () { waiting(); }, 400);
+
+    getGroupMembers(parsed);*/
 }
 
 function getGroupMembers(objTarget) {
