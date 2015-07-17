@@ -35,7 +35,10 @@ function getGroupInfo(groupId) {
 	});
 
     groupViewChanges(getGroupData());
-    setTimeout(waiting, 400);
+    var startTime = new Date().getMilliseconds;
+    setTimeout(function () { waiting(); }, 400);
+    var endTime = new Date().getMilliseconds;
+    console.log("eq: " + (endTime - startTime) + " time.");
     getGroupMembers(parsed);
 }
 
@@ -103,7 +106,7 @@ function getParsedInfo() {
     return parsed;
 }
 
-function waiting(tsec) {
+function waiting() {
     //time
     console.log("waiting");
 }
