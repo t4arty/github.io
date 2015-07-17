@@ -35,9 +35,9 @@ function getGroupInfo(groupId) {
 	});
 
     groupViewChanges(getGroupData());
-    var startTime = new Date().getMilliseconds;
+    var startTime = new Date().getTime();
     setTimeout(function () { waiting(); }, 400);
-    var endTime = new Date().getMilliseconds;
+    var endTime = new Date().getTime();
     console.log("eq: " + (endTime - startTime) + " time.");
     getGroupMembers(parsed);
 }
