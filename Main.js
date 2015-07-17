@@ -13,7 +13,7 @@ var us = '';
 var grpAvatar = '';
 
 var obj = [];
-var parsed = [];
+var parsed = [0,0];
 
 function getGroupInfo(groupId) {
     var code1 = 'var a=API.likes.getList({"type":"post","owner_id":"-10639516","item_id":"58333241","offset":0,"count":100}); return {"ids":a.items};';
