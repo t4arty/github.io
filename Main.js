@@ -13,7 +13,12 @@ var us = '';
 var grpAvatar = '';
 
 var obj = [];
-var parsed = [0,0];
+var parsed = [0, 0];
+
+var grCount = 0;
+var grOffset = 0;
+
+var sexArray = [];
 
 function getGroupInfo(groupId) {
     
@@ -45,34 +50,19 @@ function getGroupInfo(groupId) {
 function getGroupMembers(objTargets){ //,memCount,offset) {
     var aboutPost = objTargets; // 0-group, 1-item_post
     var code = '';
-    
-    var manPos = []; //man
-    var womanPos = []; //woman
-
-    var bothSex = [];
-
-    var code1 = 'var a=API.likes.getList({"type":"post","owner_id":"-10639516","item_id":"58333241","offset":0,"count":1000}); return {"ids":a};';
 
     code = 'var c=0;var co=1000;var p=[];var i=0;var o=0;var u=[];'+
         'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":'+aboutPost[0]+',"item_id":'+aboutPost[1]+',"filter":"likes","friends_only":0,"offset":o,"count":co});'+
         'c=li.count;u=u+API.users.get({"user_ids":li.items,"fields":"sex"})@.sex;i=i+1;o=o+co;}'+
         'return {"count":c,"user":u,"le":u.length};';
 
-    VK.api('execute', { 'code': code1, }, function (data) {
+    VK.api('execute', { 'code': code, }, function (data) {
         console.log(data);
         if (data.response.error) {
             errorMSG('Wrong: Group Member');
             console.log("error");
         } else {
-            //group_members_count = data.response.count;
-            bothSex = bothSex.concat(data.response.ids.users);
-            /*for (i = 0; i < bothSex.length; i++) {
-                if (bothSex[i] == 1) {
-                    manPos.push(i);
-                } else {
-                    womanPos.push(i);
-                }
-            }*/
+            
 
             console.log("bo len: "+bothSex.length);
             console.log("m: " + manPos.length);
