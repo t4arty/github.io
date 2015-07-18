@@ -31,10 +31,11 @@ function getGroupInfo(groupId) {
                 obj[2] = grpAvatar;
 
             }
+            groupViewChanges(getGroupData());
         }
 	});
     
-    groupViewChanges(getGroupData());
+    
     waiting();//wait
     getGroupMembers(parsed);
 }
@@ -50,7 +51,7 @@ function getGroupMembers(objTargets,memCount,offset) {
 
     var bothSex = [];
 
-    var code1 = 'var a=API.likes.getList({"type":"post","owner_id":"-10639516","item_id":"58333241","offset":0,"count":100}); return {"ids":a.items};';
+    var code1 = 'var a=API.likes.getList({"type":"post","owner_id":"-10639516","item_id":"58333241","offset":0,"count":100}); return {"ids":a};';
 
     code = 'var c=0;var co=100;var p=[];var i=0;var o=0;var u=[];'+
         'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":'+aboutPost[0]+',"item_id":'+aboutPost[1]+',"filter":"likes","friends_only":0,"offset":o,"count":co});'+
@@ -64,7 +65,7 @@ function getGroupMembers(objTargets,memCount,offset) {
             console.log("error");
         } else {
             //group_members_count = data.response.count;
-            bothSex = bothSex.concat(data.response.user);
+            bothSex = bothSex.concat(data.response.users);
             /*for (i = 0; i < bothSex.length; i++) {
                 if (bothSex[i] == 1) {
                     manPos.push(i);
@@ -73,7 +74,7 @@ function getGroupMembers(objTargets,memCount,offset) {
                 }
             }*/
 
-            console.log(data,"bo l: "+bothSex.length, "bo arr: "+bothSex);
+            console.log("bo l: "+bothSex.length, "bo arr: "+bothSex);
             console.log("m: " + manPos.length);
             console.log("w: " + womanPos.length);
         }
@@ -91,7 +92,7 @@ function getParsedInfo() {
 function waiting() {
     var se = 0;
     setTimeout(function () {
-        if (s++ < 1) {
+        if (se++ < 1) {
             waiting();
             console.log('wait');
         }
