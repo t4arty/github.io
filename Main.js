@@ -55,7 +55,7 @@ function getGroupMembers(objTargets){ //,memCount,offset) {
         'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":'+aboutPost[0]+',"item_id":'+aboutPost[1]+',"filter":"likes","friends_only":0,"offset":o,"count":co});'+
         'c=li.count;u=u+API.users.get({"user_ids":li.items,"fields":"sex"})@.sex;i=i+1;o=o+co;}'+
         'return {"count":c,"user":u,"l":u.length};';
-    code = 'var u=[];' +
+    code = 'var c=0;var u=[];' +
         'var li=API.likes.getList({"type":"post","owner_id":' + aboutPost[0] + ',"item_id":' + aboutPost[1] + ',"filter":"likes","friends_only":0,"offset":0,"count":1000});' +
         'c=li.count;u=u+API.users.get({"user_ids":li.items,"fields":"sex"})@.sex;}' +
         'return {"count":c,"user":u,"l":u.length};';
