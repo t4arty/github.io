@@ -65,7 +65,7 @@ function getGroupMembers(objTargets,memCount,offset) {
             console.log("error");
         } else {
             //group_members_count = data.response.count;
-            bothSex = bothSex.concat(data.response.users);
+            bothSex = bothSex.concat(data.response.ids.users);
             /*for (i = 0; i < bothSex.length; i++) {
                 if (bothSex[i] == 1) {
                     manPos.push(i);
@@ -74,7 +74,7 @@ function getGroupMembers(objTargets,memCount,offset) {
                 }
             }*/
 
-            console.log("bo l: "+bothSex.length, "bo arr: "+bothSex);
+            console.log("bo len: "+bothSex.length);
             console.log("m: " + manPos.length);
             console.log("w: " + womanPos.length);
         }
