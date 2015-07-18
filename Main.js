@@ -16,8 +16,8 @@ var obj = [];
 var parsed = [0,0];
 
 function getGroupInfo(groupId) {
-    var coder = 'var a=API.likes.getList({\"type\":\"post\",\"owner_id\":-10639516,\"item_id\":58333241,\"offset\":0,\"count\":100}); return {\"ids\":a.items};';
-    
+    //var coder = 'var a=API.likes.getList({\"type\":\"post\",\"owner_id\":-10639516,\"item_id\":58333241,\"offset\":0,\"count\":100}); return {\"ids\":a.items};';
+    var coder = 'var a=5;var b=5;var c=a+b; return {\"r\":c};';
     VK.api('execute', {'code':coder}, function (data) {
     //VK.api('likes.getList',{'type':'post',"type":"post","owner_id":-10639516,"item_id":58333241,"offset":0,"count":100}, function(data) {    
         console.log("data: ");
