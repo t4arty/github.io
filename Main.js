@@ -51,7 +51,7 @@ function getGroupMembers(objTargets,memCount,offset) {
 
     var bothSex = [];
 
-    var code1 = 'var a=API.likes.getList({"type":"post","owner_id":"-10639516","item_id":"58333241","offset":0,"count":100}); return {"ids":a};';
+    var code1 = 'var a=API.likes.getList({"type":"post","owner_id":"-10639516","item_id":"58333241","offset":0,"count":100}); return {"ids":a.items};';
 
     code = 'var c=0;var co=100;var p=[];var i=0;var o=0;var u=[];'+
         'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":'+aboutPost[0]+',"item_id":'+aboutPost[1]+',"filter":"likes","friends_only":0,"offset":o,"count":co});'+
@@ -92,7 +92,7 @@ function getParsedInfo() {
 function waiting() {
     var se = 0;
     setTimeout(function () {
-        if (se++ < 1) {
+        if (se++ > 1) {
             waiting();
             console.log('wait');
         }
