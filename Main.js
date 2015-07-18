@@ -16,34 +16,7 @@ var obj = [];
 var parsed = [0,0];
 
 function getGroupInfo(groupId) {
-    var coder = 'var a=API.likes.getList({"type":"post","owner_id":-32509740,"item_id":1057576,"offset":0,"count":100}); return {"len":a.count,"user":a.users};';
-    //var coder = 'var a=5;var b=5;var c=a+b; return {\"r\":c};';
-    VK.api('execute', {'code':coder}, function (data) {
-    //VK.api('likes.getList',{'type':'post',"type":"post","owner_id":-10639516,"item_id":58333241,"offset":0,"count":100}, function(data) {    
-        console.log("data: ");
-        console.log(data);
-        if (data.response.error || data.response == null) {
-            errorMSG('Wrong: Group Member');
-            console.log("error");
-        } else {
-            //group_members_count = data.response.count;
-            //var bothSex = bothSex.concat(data.response.ids);
-            /*for (i = 0; i < bothSex.length; i++) {
-                if (bothSex[i] == 1) {
-                    manPos.push(i);
-                } else {
-                    womanPos.push(i);
-                }
-            }*/
-
-            //console.log(data, "bo l: " + bothSex.length, "bo arr: " + bothSex);
-            //console.log("m: " + manPos.length);
-            //console.log("w: " + womanPos.length);
-        }
-    });
-
-
-    /*
+    
     VK.api("groups.getById", { 'group_id': Math.abs(groupId), 'fields': 'members_count,photo_100' }, function (data) {
         if (data.error) {
             errorMSG('Error in data. Wrong group data.')
@@ -59,40 +32,23 @@ function getGroupInfo(groupId) {
 
             }
         }
-	});*/
-    /*
-    groupViewChanges(getGroupData());
+	});
     
-    setTimeout(function () { waiting(); }, 400);
-
-    getGroupMembers(parsed);*/
+    groupViewChanges(getGroupData());
+    waiting();//wait
+    getGroupMembers(parsed);
 }
 
-function getGroupMembers(objTarget) {
-    var offset = '0';
-    var co = '1000';
-    var aboutPost = objTarget; // 0-group, 1-item_post
-    var group_members_count = 0;
+
+
+function getGroupMembers(objTargets,memCount,offset) {
+    var aboutPost = objTargets; // 0-group, 1-item_post
     var code = '';
     
     var manPos = []; //man
     var womanPos = []; //woman
 
     var bothSex = [];
-
-
-    /*VK.api('likes.getList', {'type':'post','owner_id':info[0],'item_id':info[1],'offset':OFFSET,'count':15}, function (data) {
-        if (data.error) { errorMSG('Wrong: Likes fail.'); }
-
-        m_count = data.response.count;
-        var t = data.response;
-        var members = [];
-        members = members.concat(t.users);
-
-        document.getElementById('m_members').innerHTML = 'Count: '+m_count +'<br>'+ ' users: '+members.length;
-        setTimeout(waiting, 333);
-    });*/
-    console.log("post", aboutPost[0], aboutPost[1]);
 
     var code1 = 'var a=API.likes.getList({"type":"post","owner_id":"-10639516","item_id":"58333241","offset":0,"count":100}); return {"ids":a.items};';
 
@@ -108,7 +64,7 @@ function getGroupMembers(objTarget) {
             console.log("error");
         } else {
             //group_members_count = data.response.count;
-            bothSex = bothSex.concat(data.response.ids);
+            bothSex = bothSex.concat(data.response.user);
             /*for (i = 0; i < bothSex.length; i++) {
                 if (bothSex[i] == 1) {
                     manPos.push(i);
@@ -133,8 +89,13 @@ function getParsedInfo() {
 }
 
 function waiting() {
-    //time
-    console.log("waiting");
+    var se = 0;
+    setTimeout(function () {
+        if (s++ < 1) {
+            waiting();
+            console.log('wait');
+        }
+    }, 400);
 }
 
     function groupViewChanges(obj) {
