@@ -54,12 +54,12 @@ function getGroupMembers(objTargets){ //,memCount,offset) {
     /*code = 'var c=0;var co=1000;var p=[];var i=0;var o=0;var u=[];'+
         'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":'+aboutPost[0]+',"item_id":'+aboutPost[1]+',"filter":"likes","friends_only":0,"offset":o,"count":co});'+
         'c=li.count;u=u+API.users.get({"user_ids":li.items,"fields":"sex"})@.sex;i=i+1;o=o+co;}'+
-        'return {"count":c,"user":u,"l":u.length};';*/
+        'return {"count":c,"user":u};';*/
     code = 'var c=0;var u=[];'
         +'var li=API.likes.getList({"type":"post","owner_id":'
         +'-10639516' + ',"item_id":' + '58468105' + ',"filter":"likes","friends_only":0,"offset":0,"count":1000});'
-        +'c=li.count;var s=API.users.get({"user_ids":li.items,"fields":"sex"}); u=u+s@.sex;'
-        +'return {"count":c,"user":u,"l":u.length};';
+        +'c=li.count;'//var s=API.users.get({"user_ids":li.items,"fields":"sex"}); u=u+s@.sex;
+        +'return {"count":c,"user":li};';
     //http://vk.com/mdk?w=wall-10639516_58468105
     VK.api('execute', { 'code': code, }, function (data) {
         console.log(data);
