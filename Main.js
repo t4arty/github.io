@@ -57,10 +57,10 @@ function getGroupMembers(objTargets){ //,memCount,offset) {
         'return {"count":c,"user":u,"l":u.length};';*/
     code = 'var c=0;var u=[];' +
         +'var li=API.likes.getList({"type":"post","owner_id":' +
-        + aboutPost[0] + ',"item_id":' + aboutPost[1] + ',"filter":"likes","friends_only":0,"offset":0,"count":1000});' +
+        + '-10639516' + ',"item_id":' + '58468105' + ',"filter":"likes","friends_only":0,"offset":0,"count":1000});' +
         +'c=li.count;var s=API.users.get({"user_ids":li.items,"fields":"sex"}); u=u+s@.sex;' +
         +'return {"count":c,"user":u,"l":u.length};';
-
+    //http://vk.com/mdk?w=wall-10639516_58468105
     VK.api('execute', { 'code': code, }, function (data) {
         console.log(data);
         if (data.response.error) {
