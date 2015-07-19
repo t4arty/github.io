@@ -61,7 +61,7 @@ function getGroupMembers(objTargets,offset){ //,memCount,offset) {
             console.log("error");
         } else {
             sexArray = sexArray.concat(data.response.user);
-            console.log(sexArray);
+            console.log(data);
         }
     });
 }
