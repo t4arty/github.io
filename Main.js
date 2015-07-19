@@ -19,6 +19,10 @@ var grCount = 0;
 var grOffset = 0;
 
 var sexArray = [];
+var wArray = [];
+var mArray = [];
+var m = 0;
+var w = 0;
 
 function getGroupInfo(groupId) {
     
@@ -61,8 +65,20 @@ function getGroupMembers(objTargets,offset){ //,memCount,offset) {
             console.log("error");
         } else {
             sexArray = sexArray.concat(JSON.parse("[" + data.response.user + "]"));
+            for (i = 0; i < sexArray.length; i++) {
+                if (sexArray[i] == 2) {
+                    m++;
+                }
+                if (sexArray[i] == 1) {
+                    w++;
+                }
+                if (sexArray[i] == 0) {
+                    console.log('0');
+                }
+            }
             console.log(data);
             console.log("--------------------------");
+            console.log("w: "+w+' m: '+m);
             console.log(sexArray.length);
         }
     });
