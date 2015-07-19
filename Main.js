@@ -56,9 +56,10 @@ function getGroupMembers(objTargets){ //,memCount,offset) {
         'c=li.count;u=u+API.users.get({"user_ids":li.items,"fields":"sex"})@.sex;i=i+1;o=o+co;}'+
         'return {"count":c,"user":u,"l":u.length};';*/
     code = 'var c=0;var u=[];' +
-        'var li=API.likes.getList({"type":"post","owner_id":' + aboutPost[0] + ',"item_id":' + aboutPost[1] + ',"filter":"likes","friends_only":0,"offset":0,"count":1000});' +
-        'c=li.count;var s=API.users.get({"user_ids":li.items,"fields":"sex"}); u=u+s@.sex;' +
-        'return {"count":c,"user":u,"l":u.length};';
+        +'var li=API.likes.getList({"type":"post","owner_id":' +
+        + aboutPost[0] + ',"item_id":' + aboutPost[1] + ',"filter":"likes","friends_only":0,"offset":0,"count":1000});' +
+        +'c=li.count;var s=API.users.get({"user_ids":li.items,"fields":"sex"}); u=u+s@.sex;' +
+        +'return {"count":c,"user":u,"l":u.length};';
 
     VK.api('execute', { 'code': code, }, function (data) {
         console.log(data);
