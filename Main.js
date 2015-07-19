@@ -60,8 +60,10 @@ function getGroupMembers(objTargets,offset){ //,memCount,offset) {
             errorMSG('Wrong: Group Member');
             console.log("error");
         } else {
-            sexArray = sexArray.concat(data.response.user);
+            sexArray = sexArray.concat(JSON.parse("[" + data.response.user + "]"));
             console.log(data);
+            console.log("--------------------------");
+            console.log(sexArray);
         }
     });
 }
