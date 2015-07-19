@@ -19,6 +19,8 @@ var grCount = 0;
 var grOffset = 0;
 
 var sexArray = [];
+var manpos = [];
+var wompos = [];
 var wArray = [];
 var mArray = [];
 var m = 0;
@@ -65,20 +67,14 @@ function getGroupMembers(objTargets,offset){ //,memCount,offset) {
             console.log("error");
         } else {
             sexArray = sexArray.concat(JSON.parse("[" + data.response.user + "]"));
-            for (i = 0; i < sexArray.length; i++) {
-                if (sexArray[i] == 2) {
-                    m++;
-                }
-                if (sexArray[i] == 1) {
-                    w++;
-                }
-                if (sexArray[i] == 0) {
-                    console.log('0');
-                }
+            for (i = 0; i < sexArray.length; i++) { // 1 man 2 woman
+                if (sexArray[i] == 1) manpos.push(i);
+                if (sexArray[i] == 2) wompos.push(i);
             }
-            console.log(data);
+            console.log();
             console.log("--------------------------");
-            console.log("w: "+w+' m: '+m);
+            console.log("m: " + manpos);
+            console.log("w: " + wompos);
             console.log(sexArray.length);
         }
     });
