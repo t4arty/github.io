@@ -63,7 +63,7 @@ function getGroupMembers(objTargets,offset){ //,memCount,offset) {
             sexArray = sexArray.concat(JSON.parse("[" + data.response.user + "]"));
             console.log(data);
             console.log("--------------------------");
-            console.log(sexArray);
+            console.log(sexArray.length);
         }
     });
 }
