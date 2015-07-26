@@ -42,11 +42,11 @@ function getGroupInfo(groupId) {
                 obj[2] = grpAvatar;
 
             }
-            groupViewChanges(getGroupData());
+            //groupViewChanges(getGroupData());
         }
 	});
     
-    
+    groupViewChanges(getGroupData());
     waiting();//wait
     getGroupMembers(parsed,0);
 }
@@ -93,7 +93,7 @@ function waiting() {
     setTimeout(function () {
         if (se++ > 1) {
             waiting();
-            console.log('wait');
+            console.log('waits ----------------------------------');
         }
     }, 400);
 }
