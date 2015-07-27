@@ -46,7 +46,7 @@ function getGroupInfo(groupId) {
         }
 	});
     
-    groupViewChanges(getGroupData());
+    
     waiting();//wait
     getGroupMembers(parsed,0);
 }
@@ -73,8 +73,8 @@ function getGroupMembers(objTargets,offset){ //,memCount,offset) {
             }
             console.log();
             console.log("--------------------------");
-            console.log("m: " + manpos);
-            console.log("w: " + wompos);
+            console.log("m: " + manpos.length);
+            console.log("w: " + wompos.length);
             console.log(sexArray.length);
         }
     });
@@ -91,7 +91,7 @@ function getParsedInfo() {
 function waiting() {
     var se = 0;
     setTimeout(function () {
-        if (se++ > 1) {
+        if (se++ > 2) {
             waiting();
             console.log('waits ----------------------------------');
         }
