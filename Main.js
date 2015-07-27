@@ -42,18 +42,18 @@ function getGroupInfo(groupId) {
                 obj[2] = grpAvatar;
 
             }
-            groupViewChanges(getGroupData());
-            waiting();
+            //groupViewChanges(getGroupData());
         }
 	});
     
-    
+    groupViewChanges(getGroupData());
+    waiting();//wait
     getGroupMembers(parsed,0);
 }
 
 
 
-function getGroupMembers(objTargets,offset){ 
+function getGroupMembers(objTargets,offset){ //,memCount,offset) {
     var aboutPost = objTargets; // 0-group, 1-item_post
     var code = '';
     code = 'var c=0;var co=1000;var p=[];var i=0;var o='+offset+';var u=[];'+
