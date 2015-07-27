@@ -47,11 +47,6 @@ function getGroupInfo(groupId) {
         }
 	});
     
-    
-<<<<<<< HEAD
-    waiting();//wait
-=======
->>>>>>> origin/master
     getGroupMembers(parsed,0);
 }
 
