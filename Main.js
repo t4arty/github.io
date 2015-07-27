@@ -90,11 +90,11 @@ function getParsedInfo() {
 function waiting() {
     var se = 0;
     setTimeout(function () {
-        if (se++ > 2) {
+        if (se++ > 1) {
             waiting();
             console.log('waits ----------------------------------');
         }
-    }, 400);
+    }, 500);
 }
 
     function groupViewChanges(obj) {
