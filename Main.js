@@ -26,7 +26,9 @@ var mArray = [];
 var m = 0;
 var w = 0;
 
-function getGroupInfo(groupId) {
+
+
+function getGroupInfo(groupId) { // ??? 2nd main function
     
     VK.api("groups.getById", { 'group_id': Math.abs(groupId), 'fields': 'members_count,photo_100' }, function (data) {
         if (data.error) {
@@ -42,15 +44,12 @@ function getGroupInfo(groupId) {
                 obj[2] = grpAvatar;
 
             }
-            groupViewChanges(getGroupData());
-            waiting();
+            groupViewChanges(getGroupData());//UI changes
         }
-	});
+	 });
     
-    getGroupMembers(parsed,0);
+    
 }
-
-
 
 function getGroupMembers(objTargets,offset){ 
     var aboutPost = objTargets; // 0-group, 1-item_post
@@ -79,32 +78,35 @@ function getGroupMembers(objTargets,offset){
     });
 }
 
-function getGroupData() {
+function getGroupData() { //data for groupName,groupMembersCount, avatar.
     return obj;
 }
 
-function getParsedInfo() {
+function getParsedInfo() { //getting obj {groupID, postID}
     return parsed;
 }
 
-function waiting() {
+function waiting() { //maybe wait some time
     var se = 0;
-    setTimeout(function () {
+    var t = setTimeout(function () {
         if (se++ > 1) {
             waiting();
             console.log('waits ----------------------------------');
+            se = 0;
         }
+        se++;
     }, 500);
+    clearTimeout(t);
 }
 
-    function groupViewChanges(obj) {
+function groupViewChanges(obj) { //changes UI view
         var a = obj;
         document.getElementById('groupName').innerHTML = 'Name: '+a[0];
         document.getElementById('members_count').innerHTML = 'Count: '+a[1];
         document.getElementById('av').src = a[2];
-    }
+}
 
-    function parseLink() {
+    function parseLink() { // main function for parse link from text area.
         var link = String(document.getElementById('post').value);
     
         if (link != '' && (link.match('vk.com') == 'vk.com') && (link.match('wall-') == 'wall-')) {
@@ -129,11 +131,12 @@ function waiting() {
         }
     }
 
-    function clearadress() {
+    function clearadress() { // clear text area
         document.getElementById('post').value = '';
     }
 
-    function errorMSG(msg) {
+    function errorMSG(msg) { // shows error messages in main text area
         document.getElementById('post').value = msg;
-        setTimeout(clearadress, 1000);
+        var t = setTimeout(clearadress, 1000);
+        clearTimeout(t);
     }
