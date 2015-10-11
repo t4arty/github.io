@@ -83,6 +83,12 @@ function getGroupMembers(objTargets, offset) {
 					sexCountArray[0]++; 
 					onopos.push(i);
 			}
+			
+			console.log("0: "+sexCountArray[0]);
+			console.log("1: "+sexCountArray[1]);
+			console.log("2: "+sexCountArray[2]);
+			
+			console.log("sArray: "+sexArray.length);
 		}
 	});
 }
