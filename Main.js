@@ -62,7 +62,7 @@ function getGroupMembers(objTargets, offset) {
 	// 0-group, 1-item_post
 	var code = '';
 	code = 'var c=0;var co=1000;var p=[];var i=0;var o=' + offset + ';var u=[];' + 'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":' + aboutPost[0] + ',"item_id":' + aboutPost[1] + ',"filter":"likes","friends_only":0,"offset":o,"count":co});' 
-	+ 'c=li.count;u=u+API.users.get({"user_ids":li.items,"fields":"sex"})@.sex;i=i+1;o=o+co;}' 
+	+ 'c=li.count;u=u+API.users.get({"user_ids":li.users,"fields":"sex"})@.sex;i=i+1;o=o+co;}' 
 	+ 'return {"count":c,"user":u};';
 
 	VK.api('execute', {'code' : code,}, function(data) {
