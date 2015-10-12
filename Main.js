@@ -70,8 +70,9 @@ function getGroupMembers(objTargets, offset) {
 			errorMSG('Wrong: Group Member');
 			console.log("error");
 		} else {
-			//document.getElementById("m_members").innerHTML = data.response.count;
-			console.log(data.response.sex);
+
+			document.getElementById("pCaption").innerHTML = data.response;
+
 			sexArray.push(data.response.sex);//sexArray.concat(JSON.parse("[" + data.response.sex + "]"));
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
