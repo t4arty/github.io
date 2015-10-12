@@ -74,7 +74,7 @@ function getGroupMembers(objTargets, offset) {
 			document.getElementById("m_members").innerHTML = data.response.count;
 			document.getElementById("pCaption").innerHTML = data.response.sex;
 
-			sexArray.push(data.response.sex);//sexArray.concat(JSON.parse("[" + data.response.sex + "]"));
+			//sexArray.push(data.response.sex);//sexArray.concat(JSON.parse("[" + data.response.sex + "]"));
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
 				if (sexArray[i] == 1) {
