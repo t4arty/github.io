@@ -72,9 +72,11 @@ function getGroupMembers(objTargets, offset) {
 		} else {
 
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.';
-			document.getElementById("pCaption").innerHTML = data.response.sex.split(',')[data.response.count-1];
+			var dtd = data.response.sex;
+			var cM = data.response.count;
+			document.getElementById("pCaption").innerHTML = dtd.split(',')[cM-1];
 
-			//sexArray.push(data.response.sex);//sexArray.concat(JSON.parse("[" + data.response.sex + "]"));
+			sexArray.push(dtd);//sexArray.concat(JSON.parse("[" + data.response.sex + "]"));
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
 				if (sexArray[i] == 1) {
