@@ -74,7 +74,7 @@ function getGroupMembers(objTargets, offset) {
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.';
 			var dtd = data.response.sex;
 			var cM = data.response.count;
-			document.getElementById("pCaption").innerHTML = dtd;
+			document.getElementById("pCaption").innerHTML = dtd[3];
 			console.log('console: ' + data.response.sex);
 
 			//sexArray.push(dtd);//sexArray.concat(JSON.parse("[" + data.response.sex + "]"));
