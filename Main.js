@@ -71,8 +71,8 @@ function getGroupMembers(objTargets, offset) {
 			console.log("error");
 		} else {
 			//document.getElementById("m_members").innerHTML = data.response.count;
-			console.log(data.response);
-			sexArray = sexArray.concat(JSON.parse("[" + data.response.sex + "]"));
+			console.log(data.response.sex);
+			sexArray.push(data.response.sex);//sexArray.concat(JSON.parse("[" + data.response.sex + "]"));
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
 				if (sexArray[i] == 1) {
