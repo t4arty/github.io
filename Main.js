@@ -51,7 +51,7 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 			}
 			groupViewChanges(getGroupData());
 			//UI changes
-			getGroupMembers(getParsedInfo(),1000);
+			getGroupMembers(getParsedInfo(),1);
 		}
 	});
 
@@ -74,8 +74,7 @@ function getGroupMembers(objTargets, offset) {
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.';
 			var dtd = data.response.sex;
 			var cM = data.response.count;
-			dtd = dtd.split(',');
-			document.getElementById("pCaption").innerHTML = dtd[5];
+			document.getElementById("pCaption").innerHTML = dtd;
 			console.log('console: ' + data.response.sex);
 
 			//sexArray.push(dtd);//sexArray.concat(JSON.parse("[" + data.response.sex + "]"));
