@@ -18,7 +18,7 @@ var parsed = [0, 0];
 var grCount = 0;
 var grOffset = 0;
 
-var sexArray = [];
+var sexArray;
 var manpos = [];
 var sexCountArray = [];
 var wompos = [];
@@ -73,12 +73,8 @@ function getGroupMembers(objTargets, offset) {
 
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.';
 			var dtd = String(data.response.sex);
-			var answer = [];
 			var cM = data.response.count;
-			//document.getElementById("pCaption").innerHTML = dtd;
-			answer = dtd.split(",");
-
-			sexArray.push(answer);
+			sexArray = dtd.split(",");
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
 				if (sexArray[i] == 1) {
