@@ -72,7 +72,7 @@ function getGroupMembers(objTargets, offset) {
 		} else {
 
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.';
-			var dtd = data.response.sex);
+			var dtd = data.response.sex;
 			var cM = data.response.count;
 			sexArray = JSON.parse("["+data.response.sex+"]");
 			//put different in array.
