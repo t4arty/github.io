@@ -61,7 +61,7 @@ function getGroupMembers(objTargets, offset) {
 	var aboutPost = objTargets;
 	// 0-group, 1-item_post
 	var code = '';
-	code = 'var c=0;var co=1000;var p=[];var i=0;var o=' + offset + ';var u=[];' + 'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":' + aboutPost[0] + ',"item_id":' + aboutPost[1] + ',"filter":"likes","friends_only":0,"offset":o,"count":co});' 
+	code = 'var c=0;var co=100;var p=[];var i=0;var o=' + offset + ';var u=[];' + 'while(i!=10) {var li=API.likes.getList({"type":"post","owner_id":' + aboutPost[0] + ',"item_id":' + aboutPost[1] + ',"filter":"likes","friends_only":0,"offset":o,"count":co});'
 	+ 'c=li.count;u=u+API.users.get({"user_ids":li.users,"fields":"sex"})@.sex;i=i+1;o=o+co;}' 
 	+ 'return {"count":c,"sex":u};';
 
@@ -71,7 +71,7 @@ function getGroupMembers(objTargets, offset) {
 			console.log("error");
 		} else {
 
-			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.';
+			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " L: " + data.response.sex.length;
 			var dtd = data.response.sex;
 			var cM = data.response.count;
 			sexArray = dtd;//JSON.parse("["+data.response.sex+"]");
