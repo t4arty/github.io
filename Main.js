@@ -51,7 +51,7 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 			}
 			groupViewChanges(getGroupData());
 			//UI changes
-			getGroupMembers(getParsedInfo(),1);
+			getGroupMembers(getParsedInfo(),100);
 		}
 	});
 
