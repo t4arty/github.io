@@ -72,12 +72,13 @@ function getGroupMembers(objTargets, offset) {
 		} else {
 
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.';
-			var dtd = data.response.sex;
+			var dtd = String(data.response.sex);
+			var answer = [];
 			var cM = data.response.count;
-			document.getElementById("pCaption").innerHTML = dtd[3];
-			console.log('console: ' + data.response.sex);
+			//document.getElementById("pCaption").innerHTML = dtd;
+			answer = dtd.split(",");
 
-			//sexArray.push(dtd);//sexArray.concat(JSON.parse("[" + data.response.sex + "]"));
+			sexArray.push(answer);
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
 				if (sexArray[i] == 1) {
