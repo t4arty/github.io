@@ -83,7 +83,7 @@ function getGroupMembers(objTargets, offset) {
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " L: " + data.response.sex.length;
 
 			var dtd = (String)(data.response.sex);
-			var cM = (int)(data.response.count);
+			var cM = data.response.count;
 			sexArray = dtd.split(",");//JSON.parse("["+data.response.sex+"]");
 			document.getElementById("pCaption").innerHTML = '<br><br>'+data.response.sex;
 			//put different in array.
