@@ -58,13 +58,19 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 }
 
 function getGroupMembers(objTargets, offset) {
+	//clear some vars
+	sexArray = [];
+	sexCountArray[0] = 0; sexCountArray[1] = 0; sexCountArray[2] = 0;
+	menpos = []; wompos = []; onopos = [];
+	//
+
 	var aboutPost = objTargets;
 	// 0-group, 1-item_post
 	var code = '';
 	code = 'var c=0;var co=100;var p=[];var i=0;var o=' + offset
 	+ ';var u=[];' + 'while(i!=2)'
 	+ '{var li=API.likes.getList({"type":"post","owner_id":' + aboutPost[0] + ',"item_id":' + aboutPost[1]
-	+ ',"filter":"likes","friends_only":0,"offset":o,"count":co});'
+	+ ',"filter":"lik  es","friends_only":0,"offset":o,"count":co});'
 	+ 'c=li.count;u=u+","+API.users.get({"user_ids":li.users,"fields":"sex"})@.sex;i=i+1;o=o+co;}'
 	+ 'return {"count":c,"sex":u};';
 
@@ -76,21 +82,21 @@ function getGroupMembers(objTargets, offset) {
 
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " L: " + data.response.sex.length;
 
-			var dtd = data.response.sex;
-			var cM = data.response.count;
-			sexArray = dtd;//JSON.parse("["+data.response.sex+"]");
+			var dtd = (String)(data.response.sex);
+			var cM = (int)(data.response.count);
+			sexArray = dtd.split(",");//JSON.parse("["+data.response.sex+"]");
 			document.getElementById("pCaption").innerHTML = '<br><br>'+data.response.sex;
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
-				if (sexArray[i] == 1) {
+				if (parseInt(sexArray[i],10) == 1) {
 					sexCountArray[1]++;
 					manpos.push(i);
 				}
-				if (sexArray[i] == 2){
+				if (parseInt(sexArray[i],10) == 2){
 					sexCountArray[2]++;
 					wompos.push(i);
 				}
-				if (sexArray[i] == 0){
+				if (parseInt(sexArray[i],10) == 0){
 					sexCountArray[0]++; 
 					onopos.push(i);
 				}
