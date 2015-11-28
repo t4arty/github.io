@@ -67,12 +67,16 @@ function getGroupMembers(objTargets, offset) {
 	var aboutPost = objTargets;
 	// 0-group, 1-item_post
 	var code = '';
-	code = 'var c=0;var co=100;var p=[];var i=0;var o=' + offset
-	+ ';var u=[];' + 'while(i!=1)'
-	+ '{var li=API.likes.getList({"type":"post","owner_id":' + aboutPost[0] + ',"item_id":' + aboutPost[1]
-	+ ',"filter":"likes","friends_only":0,"offset":o,"count":co});'
-	+ 'c=li.count;u=u+","+API.users.get({"user_ids":li.users,"fields":"sex"})@.sex;i=i+1;o=o+co;}'
-	+ 'return {"count":c,"sex":u};';
+	code = 'var od='+aboutPost[0]+';'
+           +'var id='+aboutPost[1]+';'
+           +'var i=0;var off=0;var c=1000;'
+           +'var mc=API.likes.getList({"type":"post","owner_id":od,"item_id":id,"count":c,"offset":off}).count;'
+           +'var lusers=[]; var like;'
+           +'while(i<10 && off<mc){'
+           +'like=API.likes.getList({"type":"post","owner_id":od,"item_id":id,"count":c,"offset":off}).items;'
+           +'lusers=lusers+API.users.get({"user_ids":like,"fields":"sex"})@.sex;'
+           +'off=off+c;i=i+1;};'
+           +'return {"count":mc,"sex":lusers};';
 
 	VK.api('execute', {'code' : code,}, function(data) {
 		if (data.response.error) {
@@ -82,7 +86,7 @@ function getGroupMembers(objTargets, offset) {
 
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " L: " + data.response.sex.length;
 
-			var dtd = (String)(data.response.sex);
+			var dtd = data.response.sex;
 			var cM = data.response.count;
 			console.log(dtd);
 			sexArray = dtd.split(",").map(Numbers);//JSON.parse("["+data.response.sex+"]");
@@ -103,9 +107,9 @@ function getGroupMembers(objTargets, offset) {
 				}
 			}
 			
-			console.log("0: "+sexCountArray[0]);
-			console.log("1: "+sexCountArray[1]);
-			console.log("2: "+sexCountArray[2]);
+			console.log("0 ono: "+sexCountArray[0]);//ono
+			console.log("1 he : "+sexCountArray[1]);//man
+			console.log("2 she: "+sexCountArray[2]);//woman
 			
 			console.log("sArray: "+sexArray.length);
 		}
