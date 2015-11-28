@@ -60,6 +60,11 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 function getGroupMembers(objTargets, offset) {
 	var aboutPost = objTargets;
 	// 0-group, 1-item_post
+	var targetGroup;
+	var targetGroupItem;
+	var itemsByOneTime=10;
+
+
 	var code = 'var od=-10639516;var id=62622753;'
                +'var i=0;var off=0;var c=1000;'
                +'var mc=API.likes.getList({"type":"post","owner_id":od,"item_id":id,"count":c,"offset":off}).count;'
@@ -68,7 +73,7 @@ function getGroupMembers(objTargets, offset) {
                +'like=API.likes.getList({"type":"post","owner_id":od,"item_id":id,"count":c,"offset":off}).items;'
                +'lusers=lusers+API.users.get({"user_ids":like,"fields":"sex"})@.sex;'
                +'off=off+c;i=i+1;};'
-               +'return [lusers.length,lusers];';
+               +'return {"c":mc,"sex":lusers};';
 
 	VK.api('execute', {'code' : code,}, function(data) {
 		if (data.response.error) {
