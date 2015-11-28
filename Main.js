@@ -81,7 +81,7 @@ function getGroupMembers(objTargets, offset) {
 			console.log("error");
 		} else {
 
-			var dtd = data.response.sex;
+			var dtd = data.response.sex;//
 			var cM = data.response.c;
 			sexArray = dtd;//JSON.parse("["+data.response.sex+"]"); //
 			//put different in array.
