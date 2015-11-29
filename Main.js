@@ -28,7 +28,15 @@ var mArray = [];
 var m = 0;
 var w = 0;
 
+//boys girls
+var sexArray = [];
+var sexCountArray[0] = 0, sexCountArray[1] = 0, sexCountArray[2] = 0;
+var menpos = [], wompos = [], onopos = [];
+//
 
+//for requests
+var massoff = 0;
+//
 
 function getGroupInfo(groupId) {// ??? 2nd main funtion
 
@@ -51,25 +59,25 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 			}
 			groupViewChanges(getGroupData());
 			//UI changes
-			getGroupMembers(getParsedInfo(),0);
+			getGroupMembers(getParsedInfo(),massoff);
 		}
 	});
 
 }
 
 function getGroupMembers(objTargets, offset) {
-	//clear some vars
+	/*clear some vars
 	sexArray = [];
 	sexCountArray[0] = 0; sexCountArray[1] = 0; sexCountArray[2] = 0;
 	menpos = []; wompos = []; onopos = [];
-	//
-
+	*/
+	var cMembers = 0;
 	var aboutPost = objTargets;
 	// 0-group, 1-item_post
 	var code = '';
 	code = 'var od='+aboutPost[0]+';'
            +'var id='+aboutPost[1]+';'
-           +'var i=0;var off=0;var c=1000;'
+           +'var i=0;var off='+offset+';var c=1000;'
            +'var mc=API.likes.getList({"type":"post","owner_id":od,"item_id":id,"count":c,"offset":off}).count;'
            +'var lusers=[]; var like;'
            +'while(i<10 && off<mc){'
@@ -88,7 +96,8 @@ function getGroupMembers(objTargets, offset) {
 			document.getElementById("pCaption").innerHTML += '<br><br>'+data.response.sex;
 			var dtd = data.response.sex;
 			var cM = data.response.count;
-			sexArray = JSON.parse("["+dtd+"]");//dtd.split(",").map(Numbers);
+			cMembers = cM;
+			sexArray.push(JSON.parse("["+dtd+"]"));
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
 				if (parseInt(sexArray[i],10) == 1) {
@@ -104,6 +113,8 @@ function getGroupMembers(objTargets, offset) {
 					onopos.push(i);
 				}
 			}
+
+			massoff = sexArray.length;
 			
 			console.log("0 ono: "+sexCountArray[0]);//ono
 			console.log("1 he : "+sexCountArray[1]);//man
@@ -112,6 +123,13 @@ function getGroupMembers(objTargets, offset) {
 			console.log("sArray: "+sexArray.length);
 		}
 	});
+
+	if (massoff < cMembers) {
+		setTimeout(function() {
+			getGroupMembers(getParsedInfo, massoff);
+		},400);
+	}
+
 }
 
 function getGroupData() {//data for groupName,groupMembersCount, avatar.
