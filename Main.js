@@ -67,7 +67,7 @@ function getGroupMembers(objTargets, offset) {
 	var aboutPost = objTargets;
 	// 0-group, 1-item_post
 	var code = '';
-	code = 'var od='+aboutPost[0]+';'
+	code = 'var od=-'+aboutPost[0]+';'
            +'var id='+aboutPost[1]+';'
            +'var i=0;var off=0;var c=1000;'
            +'var mc=API.likes.getList({"type":"post","owner_id":od,"item_id":id,"count":c,"offset":off}).count;'
@@ -85,12 +85,10 @@ function getGroupMembers(objTargets, offset) {
 		} else {
 
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " Length sex: " + data.response.sex.length;
-
+			document.getElementById("pCaption").innerHTML += '<br><br>'+data.response.sex;
 			var dtd = data.response.sex;
 			var cM = data.response.count;
-			console.log(dtd);
 			sexArray = JSON.parse("["+data.response.sex+"]");//dtd.split(",").map(Numbers);
-			document.getElementById("pCaption").innerHTML += '<br><br>'+data.response.sex;
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
 				if (parseInt(sexArray[i],10) == 1) {
