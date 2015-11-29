@@ -67,13 +67,13 @@ function getGroupMembers(objTargets, offset) {
 	var aboutPost = objTargets;
 	// 0-group, 1-item_post
 	var code = '';
-	code = 'var od=-'+aboutPost[0]+';'
+	code = 'var od='+aboutPost[0]+';'
            +'var id='+aboutPost[1]+';'
            +'var i=0;var off=0;var c=1000;'
            +'var mc=API.likes.getList({"type":"post","owner_id":od,"item_id":id,"count":c,"offset":off}).count;'
            +'var lusers=[]; var like;'
            +'while(i<10 && off<mc){'
-           +'like=API.likes.getList({"type":"post","owner_id":od,"item_id":id,"count":c,"offset":off}).items;'
+           +'like=API.likes.getList({"type":"post","owner_id":od,"item_id":id,"count":c,"offset":off}).users;'
            +'lusers=lusers+API.users.get({"user_ids":like,"fields":"sex"})@.sex;'
            +'off=off+c;i=i+1;};'
            +'return {"count":mc,"sex":lusers};';
