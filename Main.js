@@ -125,8 +125,9 @@ function getGroupMembers(objTargets, offset) {
 	});
 
 	if (massoff < cMembers) {
-		setTimeout(function() {
+		setTimeout(function run() {
 			getGroupMembers(getParsedInfo, massoff);
+			setTimeout(run,400);
 		},400);
 	}
 
