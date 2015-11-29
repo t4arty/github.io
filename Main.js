@@ -83,12 +83,12 @@ function getGroupMembers(objTargets, offset) {
 			errorMSG('Wrong: Group Member');
 			console.log("error");
 		} else {
-
+			console.log(data.response.sex);
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " Length sex: " + data.response.sex.length;
 			document.getElementById("pCaption").innerHTML += '<br><br>'+data.response.sex;
 			var dtd = data.response.sex;
 			var cM = data.response.count;
-			sexArray = JSON.parse("["+data.response.sex+"]");//dtd.split(",").map(Numbers);
+			sexArray = JSON.parse("["+dtd+"]");//dtd.split(",").map(Numbers);
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
 				if (parseInt(sexArray[i],10) == 1) {
