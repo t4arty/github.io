@@ -30,8 +30,10 @@ var w = 0;
 
 //boys girls
 var sexArray = [];
-var sexCountArray[0] = 0, sexCountArray[1] = 0, sexCountArray[2] = 0;
-var menpos = [], wompos = [], onopos = [];
+var sexCountArray = new Array[2];
+var menpos = [];
+var wompos = [];
+var onopos = [];
 //
 
 //for requests
@@ -68,11 +70,8 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 }
 
 function getGroupMembers(objTargets, offset) {
-	//clear some vars
-	var sexCountArray = new Array[2];
-	var menpos = [];
-	var wompos = [];
-	var onopos = [];
+
+
 
 	var cMembers = 0;
 	var aboutPost = objTargets;
