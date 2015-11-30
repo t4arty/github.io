@@ -97,7 +97,7 @@ function getGroupMembers(objTargets, offset) {
 			var dtd = data.response.sex;
 			var cM = data.response.count;
 			cMembers = cM;
-			sexArray.push(JSON.parse("["+dtd+"]"));
+			sexArray.concat(dtd);
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
 				if (parseInt(sexArray[i],10) == 1) {
@@ -124,12 +124,6 @@ function getGroupMembers(objTargets, offset) {
 		}
 	});
 
-	if (massoff < cMembers) {
-		setTimeout(function run() {
-			getGroupMembers(getParsedInfo, massoff);
-			setTimeout(run,400);
-		},400);
-	}
 
 }
 
