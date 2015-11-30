@@ -87,9 +87,9 @@ function getGroupMembers(objTargets, offset) {
            +'return {"count":mc,"sex":lusers};';
 
 	VK.api('execute', {'code' : code,}, function(data) {
-		if (data.response.error) {
+		if (data.error) {
 			errorMSG('Wrong: Group Member');
-			console.log("error");
+			console.log(data.error.errorMSG);
 		} else {
 			progressMembersStart();
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " Length sex: " + data.response.sex.length;
@@ -118,12 +118,13 @@ function getGroupMembers(objTargets, offset) {
 			console.log("1 he : "+sexCountArray[1]);//man
 			console.log("2 she: "+sexCountArray[2]);//woman
 			
-			console.log("sArray: "+sexArray.length);
+			console.log("sArray : "+sexArray.length);
+			console.log("massoff: "+massoff);
 
 			if (massoff < cM) {
 				setTimeout(function() {
 					getGroupMembers(getParsedInfo, massoff);
-				},400);
+				},500);
 			}
 			progressMembersEnd();
 		}
