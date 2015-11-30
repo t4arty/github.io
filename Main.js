@@ -100,34 +100,35 @@ function getGroupMembers(objTargets, offset) {
 			sexArray = sexArray.concat(dtd);
 			massoff = sexArray.length;
 			//put different in array.
-			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
-				if (parseInt(sexArray[i],10) == 1) {
-					sexCountArray[1]++;
-					manpos.push(i);
-				}
-				if (parseInt(sexArray[i],10) == 2){
-					sexCountArray[2]++;
-					wompos.push(i);
-				}
-				if (parseInt(sexArray[i],10) == 0){
-					sexCountArray[0]++; 
-					onopos.push(i);
-				}
-			}
-			progressMembersEnd();
-			console.log("0 ono: "+sexCountArray[0]);//ono
-			console.log("1 he : "+sexCountArray[1]);//man
-			console.log("2 she: "+sexCountArray[2]);//woman
-			
-			console.log("sArray : "+sexArray.length);
-			console.log("massoff: "+massoff);
-			sexArray = [];
 
-			if (massoff < cM) {
+
+			if (massoff <= cM) {
 				setTimeout(function() { getGroupMembers(getParsedInfo(), massoff); },500);
 			}
 		}
 	});
+
+	for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
+    				if (parseInt(sexArray[i],10) == 1) {
+    					sexCountArray[1]++;
+    					manpos.push(i);
+    				}
+    				if (parseInt(sexArray[i],10) == 2){
+    					sexCountArray[2]++;
+    					wompos.push(i);
+    				}
+    				if (parseInt(sexArray[i],10) == 0){
+    					sexCountArray[0]++;
+    					onopos.push(i);
+    				}
+    			}
+    			progressMembersEnd();
+    			console.log("0 ono: "+sexCountArray[0]);//ono
+    			console.log("1 he : "+sexCountArray[1]);//man
+    			console.log("2 she: "+sexCountArray[2]);//woman
+
+    			console.log("sArray : "+sexArray.length);
+    			console.log("massoff: "+massoff);
 }
 
 function getGroupData() {//data for groupName,groupMembersCount, avatar.
