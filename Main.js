@@ -29,6 +29,9 @@ var w = 0;
 
 //boys girls
 var sexCountArray = [];
+	sexCountArray[0] = 0;
+	sexCountArray[1] = 0;
+	sexCountArray[2] = 0;
 //
 
 //for requests
