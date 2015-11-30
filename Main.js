@@ -60,17 +60,18 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 			groupViewChanges(getGroupData());
 			//UI changes
 			getGroupMembers(getParsedInfo(),massoff);
+
+			sexArray = [];
 		}
 	});
 
 }
 
 function getGroupMembers(objTargets, offset) {
-	/*clear some vars
-	sexArray = [];
-	sexCountArray[0] = 0; sexCountArray[1] = 0; sexCountArray[2] = 0;
-	menpos = []; wompos = []; onopos = [];
-	*/
+	//clear some vars
+	var sexCountArray[0] = 0, sexCountArray[1] = 0, sexCountArray[2] = 0;
+	var menpos = [], wompos = [], onopos = [];
+
 	var cMembers = 0;
 	var aboutPost = objTargets;
 	// 0-group, 1-item_post
