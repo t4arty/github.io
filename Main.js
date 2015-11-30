@@ -13,14 +13,13 @@ var us = '';
 var grpAvatar = '';
 
 var obj = [];
-var parsed = [0, 0];
+var parsed = new Array(2);
 
 var grCount = 0;
 var grOffset = 0;
 
-var sexArray;
+var sexArray = [];
 var manpos = [];
-var sexCountArray = [0,0,0];
 var wompos = [];
 var onopos = [];
 var wArray = [];
@@ -29,11 +28,7 @@ var m = 0;
 var w = 0;
 
 //boys girls
-var sexArray = [];
-var sexCountArray = new Array[2];
-var menpos = [];
-var wompos = [];
-var onopos = [];
+var sexCountArray = new Array(3);
 //
 
 //for requests
@@ -70,8 +65,6 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 }
 
 function getGroupMembers(objTargets, offset) {
-
-
 
 	var cMembers = 0;
 	var aboutPost = objTargets;
