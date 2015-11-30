@@ -121,9 +121,8 @@ function getGroupMembers(objTargets, offset) {
 			console.log("sArray: "+sexArray.length);
 
 			if (massoff < cM) {
-				setTimeout(function run() {
+				setTimeout(function() {
 					getGroupMembers(getParsedInfo, massoff);
-					setTimeout(run, 400);
 				},400);
 			}
 			progressMembersEnd();
