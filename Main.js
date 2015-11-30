@@ -91,13 +91,13 @@ function getGroupMembers(objTargets, offset) {
 			errorMSG('Wrong: Group Member');
 			console.log("error");
 		} else {
-			console.log(data.response.sex);
+
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " Length sex: " + data.response.sex.length;
 			document.getElementById("pCaption").innerHTML += '<br><br>'+data.response.sex;
 			var dtd = data.response.sex;
 			var cM = data.response.count;
 			cMembers = cM;
-			sexArray.concat(dtd);
+			sexArray = sexArray.concat(dtd);
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
 				if (parseInt(sexArray[i],10) == 1) {
@@ -113,8 +113,6 @@ function getGroupMembers(objTargets, offset) {
 					onopos.push(i);
 				}
 			}
-
-			massoff = sexArray.length;
 			
 			console.log("0 ono: "+sexCountArray[0]);//ono
 			console.log("1 he : "+sexCountArray[1]);//man
@@ -123,7 +121,6 @@ function getGroupMembers(objTargets, offset) {
 			console.log("sArray: "+sexArray.length);
 		}
 	});
-
 
 }
 
