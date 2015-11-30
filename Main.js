@@ -28,7 +28,7 @@ var m = 0;
 var w = 0;
 
 //boys girls
-var sexCountArray = new Array(3);
+var sexCountArray = [];
 //
 
 //for requests
@@ -60,8 +60,10 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 
 			sexArray = [];
 		}
-	});
 
+		console.log(massoff);
+
+	});
 }
 
 function getGroupMembers(objTargets, offset) {
@@ -108,7 +110,7 @@ function getGroupMembers(objTargets, offset) {
 					onopos.push(i);
 				}
 			}
-			
+			massoff = sexArray.length;
 			console.log("0 ono: "+sexCountArray[0]);//ono
 			console.log("1 he : "+sexCountArray[1]);//man
 			console.log("2 she: "+sexCountArray[2]);//woman
