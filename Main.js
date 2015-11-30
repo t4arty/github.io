@@ -89,7 +89,7 @@ function getGroupMembers(objTargets, offset) {
 	VK.api('execute', {'code' : code,}, function(data) {
 		if (data.error) {
 			errorMSG('Wrong: Group Member');
-			console.log(data.error.errorMSG);
+			console.log(data.error.error_msg);
 		} else {
 			progressMembersStart();
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " Length sex: " + data.response.sex.length;
@@ -114,6 +114,7 @@ function getGroupMembers(objTargets, offset) {
 					onopos.push(i);
 				}
 			}
+			progressMembersEnd();
 			console.log("0 ono: "+sexCountArray[0]);//ono
 			console.log("1 he : "+sexCountArray[1]);//man
 			console.log("2 she: "+sexCountArray[2]);//woman
@@ -122,11 +123,8 @@ function getGroupMembers(objTargets, offset) {
 			console.log("massoff: "+massoff);
 
 			if (massoff < cM) {
-				setTimeout(function() {
-					getGroupMembers(getParsedInfo, massoff);
-				},500);
+				setTimeout(function() { getGroupMembers(getParsedInfo(), massoff); },500);
 			}
-			progressMembersEnd();
 		}
 	});
 }
