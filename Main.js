@@ -70,7 +70,9 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 function getGroupMembers(objTargets, offset) {
 	//clear some vars
 	var sexCountArray = new Array[2];
-	var menpos = [], wompos = [], onopos = [];
+	var menpos = [];
+	var wompos = [];
+	var onopos = [];
 
 	var cMembers = 0;
 	var aboutPost = objTargets;
