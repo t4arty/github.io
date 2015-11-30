@@ -64,7 +64,7 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 			sexArray = [];
 		}
 
-		console.log(massoff);
+
 
 	});
 }
@@ -91,13 +91,14 @@ function getGroupMembers(objTargets, offset) {
 			errorMSG('Wrong: Group Member');
 			console.log("error");
 		} else {
-
+			progressMembersStart();
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " Length sex: " + data.response.sex.length;
 			document.getElementById("pCaption").innerHTML += '<br><br>'+data.response.sex;
 			var dtd = data.response.sex;
 			var cM = data.response.count;
 			cMembers = cM;
 			sexArray = sexArray.concat(dtd);
+			massoff = sexArray.length;
 			//put different in array.
 			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
 				if (parseInt(sexArray[i],10) == 1) {
@@ -113,15 +114,21 @@ function getGroupMembers(objTargets, offset) {
 					onopos.push(i);
 				}
 			}
-			massoff = sexArray.length;
 			console.log("0 ono: "+sexCountArray[0]);//ono
 			console.log("1 he : "+sexCountArray[1]);//man
 			console.log("2 she: "+sexCountArray[2]);//woman
 			
 			console.log("sArray: "+sexArray.length);
+
+			if (massoff < cM) {
+				setTimeout(function run() {
+					getGroupMembers(getParsedInfo, massoff);
+					setTimeout(run, 400);
+				},400);
+			}
+			progressMembersEnd();
 		}
 	});
-
 }
 
 function getGroupData() {//data for groupName,groupMembersCount, avatar.
@@ -142,6 +149,13 @@ function waiting() {//maybe wait some time
 		}
 		se++;
 	}, 500);
+}
+
+function progressMembersStart() {
+	document.getElementById('goes').innerHTML = 'Start.'
+}
+function progressMembersEnd() {
+	document.getElementById('goes').innerHTML = 'End.'
 }
 
 function groupViewChanges(obj) {//changes UI view
