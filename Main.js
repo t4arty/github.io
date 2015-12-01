@@ -60,13 +60,11 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 			groupViewChanges(getGroupData());
 			//UI changes
 			progressMembersStart();
-			//
 			getGroupMembers(getParsedInfo(),massoff);
-
+			makeCanculateSex(sexArray);
+			progressMembersEnd();
 
 		}
-
-		makeCanculateSex(sexArray);
 
 	});
 }
@@ -113,36 +111,17 @@ function getGroupMembers(objTargets, offset) {
 			var cM = data.response.count;
 			cMembers = cM;
 			sexArray = sexArray.concat(dtd);
-			massoff = sexArray.length;
-
-			progressMembersEnd();
 
 			console.log("sArray : "+sexArray.length);
 			console.log("massoff: "+massoff);
 
-			if (massoff <= cM) {
+			if (cM > sexArray.length) {
 				setTimeout(function() { getGroupMembers(getParsedInfo(), massoff); },500);
+			}else{
+				console.log('Array full');
 			}
 		}
 	});
-}
-
-function t() {
-//put different in array.
-			for (var i = 0; i < sexArray.length; i++) {// 1 man 2 woman
-				if (parseInt(sexArray[i],10) == 1) {
-					sexCountArray[1]++;
-					manpos.push(i);
-				}
-				if (parseInt(sexArray[i],10) == 2){
-					sexCountArray[2]++;
-					wompos.push(i);
-				}
-				if (parseInt(sexArray[i],10) == 0){
-					sexCountArray[0]++;
-					onopos.push(i);
-				}
-			}
 }
 
 function getGroupData() {//data for groupName,groupMembersCount, avatar.
