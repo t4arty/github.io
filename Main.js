@@ -57,7 +57,7 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 			//UI changes
 			progressMembersStart();
 			getGroupMembers(getParsedInfo(),massoff);
-			makeCanculateSex(sexArray);
+			if (sexArray.length) makeCanculateSex(sexArray);
 			progressMembersEnd();
 
 		}
@@ -80,6 +80,7 @@ var sexArr = array;
 
 function getGroupMembers(objTargets, offset) {
 
+	var clearTimeout = [];
 	var cMembers = 0;
 	var aboutPost = objTargets;
 	// 0-group, 1-item_post
@@ -107,12 +108,12 @@ function getGroupMembers(objTargets, offset) {
 			var cM = data.response.count;
 			cMembers = cM;
 			sexArray = sexArray.concat(dtd);
-
-			console.log("sArray : "+sexArray.length);
+			massoff = sexArray.length;
 
 			if (cM > sexArray.length) {
 				setTimeout(function() { getGroupMembers(getParsedInfo(), massoff); },500);
 			}else{
+				console.log("sArray : "+sexArray.length);
 				console.log('Array full');
 			}
 		}
