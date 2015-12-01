@@ -34,10 +34,6 @@ var sexCountArray = [];
 	sexCountArray[2] = 0;
 //
 
-//for requests
-var massoff = 0;
-//
-
 function getGroupInfo(groupId) {// ??? 2nd main funtion
 
 	VK.api("groups.getById", {
@@ -113,7 +109,6 @@ function getGroupMembers(objTargets, offset) {
 			sexArray = sexArray.concat(dtd);
 
 			console.log("sArray : "+sexArray.length);
-			console.log("massoff: "+massoff);
 
 			if (cM > sexArray.length) {
 				setTimeout(function() { getGroupMembers(getParsedInfo(), massoff); },500);
