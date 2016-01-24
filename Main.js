@@ -53,12 +53,13 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 				obj[2] = grpAvatar;
 
 			}
+			//UI changes group view(avatar name and so on)
 			groupViewChanges(getGroupData());
 			//UI changes
-			progressMembersStart();
+			progressMembersStart(); //start msg about job
 			getGroupMembers(getParsedInfo(),massoff);
-			if (sexArray.length) makeCanculateSex(sexArray);
-			progressMembersEnd();
+			progressMembersEnd(); // end msg about job
+
 
 		}
 
