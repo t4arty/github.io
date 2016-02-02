@@ -1,5 +1,5 @@
 /**
- *
+ * cheer
  */
 
 VK.init({
