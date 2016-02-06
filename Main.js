@@ -66,16 +66,23 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 }
 
 function makeCanculateSex(array) {
-var sexArr = array;
+	var sexArr = array;
+	var mans = 0;
+	var womans = 0;
+	var ono = 0;
 	for (var s in sexArr) {
-		if (s == 0) sexCountArray[0]++;
-		if (s == 1) sexCountArray[1]++;
-		if (s == 2) sexCountArray[2]++;
+		if (s == 2) mans++;
+		if (s == 1) womans++;
+		if (s == 0) ono++;
 	}
+	sexCountArray[0] = ono;
+	sexCountArray[1] = womans;
+	sexCountArray[2] = mans;
 
-	for (var r in sexCountArray) {
-		console.log(r);
-	}
+	//UI changes
+	document.getElementById('pCaption').innerHTML = 
+		'ono: '+sexCountArray[0]+' wom: '+sexCountArray[1]+' man: '+sexCountArray[2]+' end.';
+	//
 }
 
 function getGroupMembers(objTargets, offset) {
@@ -103,7 +110,7 @@ function getGroupMembers(objTargets, offset) {
 		} else {
 
 			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " Length sex: " + data.response.sex.length;
-			document.getElementById("pCaption").innerHTML += '<br><br>'+data.response.sex;
+			//document.getElementById("pCaption").innerHTML += '<br><br>'+data.response.sex;
 			var dtd = data.response.sex;
 			var cM = data.response.count;
 			cMembers = cM;
