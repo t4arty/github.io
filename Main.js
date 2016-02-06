@@ -73,9 +73,9 @@ function makeCanculateSex(array) {
 	var t = 0;
 	for (var s in sexArr) {
 		t = array[s];
-		if (s == 2) mans = mans+1;
-		if (s == 1) womans = womans+1;
-		if (s == 0) ono = ono+1;
+		if (t == 2) mans = mans+1;
+		if (t == 1) womans = womans+1;
+		if (t == 0) ono = ono+1;
 	}
 	sexCountArray[0] = ono;
 	sexCountArray[1] = womans;
