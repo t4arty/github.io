@@ -72,7 +72,7 @@ function makeCanculateSex(array) {
 	var ono = 0;
 	var t = 0;
 	for (var s in sexArr) {
-		t = array(s);
+		t = array[s];
 		if (s == 2) mans = mans+1;
 		if (s == 1) womans = womans+1;
 		if (s == 0) ono = ono+1;
