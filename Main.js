@@ -58,9 +58,6 @@ function getGroupInfo(groupId) {// ??? 2nd main funtion
 			//UI changes
 			progressMembersStart(); //start msg about job
 			getGroupMembers(getParsedInfo(),massoff);
-			progressMembersEnd(); // end msg about job
-
-
 		}
 
 	});
@@ -114,6 +111,7 @@ function getGroupMembers(objTargets, offset) {
 			if (cM > sexArray.length) {
 				setTimeout(function() { getGroupMembers(getParsedInfo(), massoff); },500);
 			}else{
+				makeCanculateSex(sexArray);
 				console.log("sArray : "+sexArray.length);
 				console.log('Array full');
 			}
