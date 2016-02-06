@@ -70,10 +70,12 @@ function makeCanculateSex(array) {
 	var mans = 0;
 	var womans = 0;
 	var ono = 0;
+	var t = 0;
 	for (var s in sexArr) {
-		if (s == 2) mans++;
-		if (s == 1) womans++;
-		if (s == 0) ono++;
+		t = array(s);
+		if (s == 2) mans = mans+1;
+		if (s == 1) womans = womans+1;
+		if (s == 0) ono = ono+1;
 	}
 	sexCountArray[0] = ono;
 	sexCountArray[1] = womans;
@@ -118,7 +120,7 @@ function getGroupMembers(objTargets, offset) {
 			massoff = sexArray.length;
 
 			if (cM > sexArray.length) {
-				setTimeout(function() { getGroupMembers(getParsedInfo(), massoff); },500);
+				setTimeout(function() { getGroupMembers(getParsedInfo(), massoff); },400);
 			}else{
 				makeCanculateSex(sexArray);
 				console.log("sArray : "+sexArray.length);
