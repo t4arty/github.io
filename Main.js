@@ -18,6 +18,8 @@ var parsed = new Array(2);
 var grCount = 0;
 var grOffset = 0;
 
+var massoff = 0;
+
 var sexArray = [];
 var manpos = [];
 var wompos = [];
