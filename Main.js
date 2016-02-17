@@ -198,3 +198,39 @@ function errorMSG(msg) {// shows error messages in main text area
 	document.getElementById('post').value = msg;
 	var t = setTimeout(clearadress, 1000);
 }
+
+function dateFromString(str) { // return amount of age ago.
+	function func(str) {
+	var dat = new Date();
+	if (str != null)
+	{
+		if (str.length > 6)
+		{
+			var d = str.split('.');
+			var date = new Date();
+			var dd = date.getDate();
+			var mm = date.getMonth()+1;
+			var yy = date.getFullYear();
+			var r = 0;
+			r = yy - d[2];
+
+			if (mm == d[1]) {
+				if (dd < d[0]) {
+					return r-1;
+				}else{
+					return r;
+				}
+			}
+			if (mm > d[1]) {
+				return r-1;
+			}else{
+				return r+'';
+			}
+		}else{
+			return 'bd';//date string low then 6;
+		}
+	}else{
+		return 'bn';//'date string equal null';
+	}
+}
+}
