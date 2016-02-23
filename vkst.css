@@ -3,6 +3,13 @@ body {
 	padding: 0px;
 }
 
+div {
+	border: 1px solid black;
+}
+div:hover {
+	border: 1px solid white;
+}
+
 #main {
 	width: 600px;
 	height: 500px;
@@ -55,4 +62,13 @@ body {
 
 p {
 	text-align: center;
+}
+
+/*table*/
+@media (max-width: 800) {
+
+}
+/*mobile phone*/
+@media (max-width: 480) {
+
 }

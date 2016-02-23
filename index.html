@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-<title>Test JavaScript VkApi example</title>
+<meta name="theme-color" content="#ff0000">
+<title>Test JavaScript VkApi</title>
 <link rel="stylesheet" type="text/css" href="vkst.css" />
 <script src="//vk.com/js/api/xd_connection.js?2" type="text/javascript">
 </script>
@@ -11,7 +11,6 @@
 
 </head>
 <body>
-
 <div id="main">
 	<div id="textEnter">	
 		<form id='adrForm'>
@@ -19,31 +18,25 @@
 			<input id='start' onclick='parseLink()' type="button" value="Стартуем.">
 		</form>
 	</div>
-	
 	<div id='info'>
 		<div id='avatar'>
-			<p id='groupName' style="text-align:center">Group Name</p>
-			<img id='av' alt="Group avatar" style="display:block; margin: 0 auto" src='http://'>
-			<p id='members_count' style="text-align:center">members_count</p>
+			<p id='groupName'>Group Name</p>
+			<img id='av' alt="Group avatar" src='#'>
+			<p id='members_count'>members_count</p>
 		</div>
 		<div id='members'>
-            		<p id='m_members' style="text-align:left;width:auto;">Count:</p>
+            <p id='m_members'>Count:</p>
 		</div>
-		
 		<div id='progress'>
-			<p id='pCaption' style='text-align:center;width:auto;display:inline-block;'>Почти начали</p>
+			<p id='pCaption'>Почти начали</p>
 		</div>
 	</div>
 	<div id='empty'>
-		<p id='goes' style='text-align:center;width:auto;display:inline-block;'></p>
+		<p id='p_empty'></p>
 	</div>
-
 	<div id='progressBar'>
-		<p id='goes' style='text-align:center;width:100%;display:inline-block;color:red;'></p>
+		<p id='p_progressBar'></p>
 	</div>
-
 </div>
-
-
 </body>
 </html>
