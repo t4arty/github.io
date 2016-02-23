@@ -1,0 +1,58 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+#main {
+	width: 600px;
+	height: 500px;
+	background-color: blue;
+	display: block;
+}
+#textEnter {
+	width: auto;
+	height: 30px;
+	background-color: yellow;
+}
+#post {
+	width: 80%;
+	margin: 4px;
+	margin-left: 10px;
+}
+#start {
+	width: 15%;
+}
+#info {
+	margin-top: 5px;
+	background-color: green;
+	width: 100%;
+	height: 27%;
+}
+#avatar {
+	background-color: yellow;
+	margin-top: 0px;
+	width: 25%;
+	height: 100%;
+	float: left;
+}
+#members {
+	width:auto;
+	height:auto;
+}
+#progress {
+	width:100%;
+	height:25px;
+}
+#empty {
+	width:100%;
+	height:25px;
+}
+#progressBar {
+	width:100%;
+	height:25px;
+	background:blue;
+}
+
+p {
+	text-align: center;
+}
