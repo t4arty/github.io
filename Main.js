@@ -82,7 +82,7 @@ function makeCanculateSex(array) {
 	sexCountArray[2] = mans;
 
 	//UI changes
-	document.getElementById('pCaption').innerHTML = 
+	document.getElementById('pCaption').innerHTML =
 		'ono: '+sexCountArray[0]+' wom: '+sexCountArray[1]+' man: '+sexCountArray[2]+' end.';
 	//
 }
@@ -151,10 +151,10 @@ function waiting() {//maybe wait some time
 }
 
 function progressMembersStart() {
-	document.getElementById('goes').innerHTML = 'Start.'
+	document.getElementById('goes').innerHTML = 'Start.';
 }
 function progressMembersEnd() {
-	document.getElementById('goes').innerHTML = 'End.'
+	document.getElementById('goes').innerHTML = 'End.';
 }
 
 function groupViewChanges(obj) {//changes UI view
@@ -167,7 +167,7 @@ function groupViewChanges(obj) {//changes UI view
 function parseLink() {// main function for parse link from text area.
 	var link = String(document.getElementById('post').value);
 
-	if (link != '' && (link.match('vk.com') == 'vk.com') && (link.match('wall-') == 'wall-')) {
+	if (link != '' && (link.match('new.vk.com') == 'new.vk.com') && (link.match('wall-') == 'wall-')) {
 
 		if (link.indexOf('=wall') != -1) {
 			var adr = link.substring(link.indexOf('=wall') + 5, link.length);
