@@ -83,7 +83,7 @@ function makeCanculateSex(array) {
 
 	//UI changes
 	document.getElementById('pCaption').innerHTML =
-		'ono: '+sexCountArray[0]+' wom: '+sexCountArray[1]+' man: '+sexCountArray[2]+' end.';
+	$("#pCaption").text('ono: '+sexCountArray[0]+' wom: '+sexCountArray[1]+' man: '+sexCountArray[2]+' end.');
 	//
 }
 
@@ -111,7 +111,7 @@ function getGroupMembers(objTargets, offset) {
 			console.log(data.error.error_msg);
 		} else {
 
-			document.getElementById("m_members").innerHTML = 'Count: ' + data.response.count + ' members.' + " Length sex: " + data.response.sex.length;
+			$('#m_members').text('Count: ' + data.response.count + ' members.' + " Length sex: " + data.response.sex.length);
 			//document.getElementById("pCaption").innerHTML += '<br><br>'+data.response.sex;
 			var dtd = data.response.sex;
 			var cM = data.response.count;
@@ -151,21 +151,21 @@ function waiting() {//maybe wait some time
 }
 
 function progressMembersStart() {
-	document.getElementById('goes').innerHTML = 'Start.';
+	$('#goes').text('Start.');
 }
 function progressMembersEnd() {
-	document.getElementById('goes').innerHTML = 'End.';
+	$('#goes').text('End.');
 }
 
 function groupViewChanges(obj) {//changes UI view
 	var a = obj;
-	document.getElementById('groupName').innerHTML = 'Name: ' + a[0];
-	document.getElementById('members_count').innerHTML = 'Count: ' + a[1];
-	document.getElementById('av').src = a[2];
+	$('#groupName').text('Name: ' + a[0]);
+	$('#members_count').text('Count: ' + a[1]);
+	$('#av').src = a[2];
 }
 
 function parseLink() {// main function for parse link from text area.
-	var link = String(document.getElementById('post').value);
+	var link = String($('#post').value());
 
 	if (link != '' && (link.match('new.vk.com') == 'new.vk.com') && (link.match('wall-') == 'wall-')) {
 
@@ -191,11 +191,11 @@ function parseLink() {// main function for parse link from text area.
 }
 
 function clearadress() {// clear text area
-	document.getElementById('post').value = '';
+	$('#post').text('');
 }
 
 function errorMSG(msg) {// shows error messages in main text area
-	document.getElementById('post').value = msg;
+	$('#post').text(msg);
 	var t = setTimeout(clearadress, 1000);
 }
 
