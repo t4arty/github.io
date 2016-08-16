@@ -4,30 +4,48 @@ body {
 }
 
 div {
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 div:hover {
-	border: 1px solid white;
+	/*border: 1px solid white;*/
 }
 
-#main {
-	width: 600px;
+.main {
+	width: 100%;
 	height: 500px;
 	background-color: blue;
 	display: block;
 }
-#textEnter {
-	width: auto;
-	height: 30px;
-	background-color: yellow;
+.textEnter {
+	width: 100%;
+	height: 6%;
+	background-color: #d1d1d1;
+	display: inline-block;
+	vertical-align: middle;
 }
 #post {
 	width: 80%;
-	margin: 4px;
-	margin-left: 10px;
+	height: 20px;
+	border: none;
+	border-radius: 3px;
+	margin-top: 3px;
+	margin-left: 2%;
+	padding-left: 1%;
 }
 #start {
-	width: 15%;
+	width: 16%;
+	height: 20px;
+	background-color: #4CAF50;
+	border: none;
+	border-radius: 3px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+}
+#start:hover {
+	color: black;
 }
 #info {
 	margin-top: 5px;
@@ -64,8 +82,19 @@ p {
 	text-align: center;
 }
 
+#footer {
+	width: 600px;
+	height: 200px;
+}
+.advert {
+
+}
+.list_item {
+	margin: 0px;
+	padding: 0px;
+}
 /*table*/
-@media (max-width: 800) {
+@media (max-width: 600) {
 
 }
 /*mobile phone*/

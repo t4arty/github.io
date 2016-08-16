@@ -5,18 +5,13 @@
 <meta name="theme-color" content="#ff0000">
 <title>Test JavaScript VkApi</title>
 <link rel="stylesheet" type="text/css" href="vkst.css" />
-<script src="//vk.com/js/api/xd_connection.js?2" type="text/javascript">
-</script>
-<script type="text/javascript" src="Main.js"></script>
-<script type="text/javascript" src="jq300min.js"></script>
-
 </head>
 <body>
-<div id="main">
-	<div id="textEnter">
+<div class="main">
+	<div class="textEnter">
 		<form id='adrForm'>
-			<input id='post' type="text">
-			<input id='start' onclick='parseLink()' type="button" value="Стартуем.">
+			<input id='post' type="text" />
+			<input id='start' onclick='parseLink()' type="button" value="Стартуем." />
 		</form>
 	</div>
 	<div id='info'>
@@ -39,5 +34,24 @@
 		<p id='p_progressBar'></p>
 	</div>
 </div>
+<div id="footer">
+	<div class="advert">
+		<ul class="list_item">
+			<li>li_N_1</li>
+			<li>li_N_2</li>
+			<li>li_N_3</li>
+			<li>li_N_4</li>
+			<li>li_N_5</li>
+		</ul>
+	</div>
+</div>
+
 </body>
+
+<!-- faster ? -->
+<script src="//vk.com/js/api/xd_connection.js?2" type="text/javascript">
+</script>
+<script type="text/javascript" src="Main.js"></script>
+<script type="text/javascript" src="jq300min.js"></script>
+<!-- maybe -->
 </html>

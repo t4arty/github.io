@@ -165,7 +165,7 @@ function groupViewChanges(obj) {//changes UI view
 }
 
 function parseLink() {// main function for parse link from text area.
-	var link = String($('#post').value());
+	var link = String($('#post').value()) || '';
 
 	if (link != '' && (link.match('new.vk.com') == 'new.vk.com') && (link.match('wall-') == 'wall-')) {
 
